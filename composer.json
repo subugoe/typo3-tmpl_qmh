@@ -1,0 +1,25 @@
+{
+    "name": "subugoe/tmpl-qmh",
+    "type": "typo3-cms-extension",
+    "description": "Template and Configuration for the Quality Management Guide Teaching and Learning of the Georg-August-Universität Göttingen.",
+    "homepage": "https://qmh.sub.uni-goettingen.de/",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS", "sub"],
+    "version": "1.0.0",
+    "support": {
+        "issues": "https://github.com/subugoe/typo3-tmpl_qmh/issues"
+    },
+    "replace": {
+        "tmpl_qmh": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "Subugoe\\TmplQmh\\": "Classes/"
+        }
+    },
+    "require": {
+        "typo3/cms-core": "^8.7 || ^9.5",
+        "typo3/cms-rte-ckeditor": "^8.7 || ^9.5",
+        "bk2k/bootstrap-package": "^10.0"
+    }
+}

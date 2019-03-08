@@ -1,0 +1,60 @@
+######################
+#### DEPENDENCIES ####
+######################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/constants.typoscript">
+
+
+############
+### PAGE ###
+############
+page {
+    logo {
+        file = EXT:tmpl_qmh/Resources/Public/Images/logo.svg
+        fileInverted = EXT:tmpl_qmh/Resources/Public/Images/logo-inverted.svg
+        height = 52
+        width = 192
+        alt = tmpl qmh
+        linktitle = tmpl qmh
+    }
+    favicon {
+        file = EXT:tmpl_qmh/Resources/Public/Icons/favicon.ico
+    }
+    fluidtemplate {
+        layoutRootPath = EXT:tmpl_qmh/Resources/Private/Layouts/Page/
+        partialRootPath = EXT:tmpl_qmh/Resources/Private/Partials/Page/
+        templateRootPath = EXT:tmpl_qmh/Resources/Private/Templates/Page/
+    }
+}
+
+
+##################
+### EXTENSIONS ###
+##################
+plugin.bootstrap_package {
+    view {
+        layoutRootPath = EXT:tmpl_qmh/Resources/Private/Layouts/
+        partialRootPath = EXT:tmpl_qmh/Resources/Private/Partials/
+        templateRootPath = EXT:tmpl_qmh/Resources/Private/Templates/
+    }
+}
+
+
+########################
+### CONTENT ELEMENTS ###
+########################
+plugin.bootstrap_package_contentelements {
+    view {
+        layoutRootPath = EXT:tmpl_qmh/Resources/Private/Layouts/ContentElements/
+        partialRootPath = EXT:tmpl_qmh/Resources/Private/Partials/ContentElements/
+        templateRootPath = EXT:tmpl_qmh/Resources/Private/Templates/ContentElements/
+    }
+}
+
+
+################################
+### BOOTSTRAP SCSS CONSTANTS ###
+################################
+plugin.bootstrap_package.settings.scss {
+    primary = #eb3e4a
+    secondary = #013859
+}
