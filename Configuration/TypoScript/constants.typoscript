@@ -4,25 +4,54 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/constants.typoscript">
 
 
+##############
+### CONFIG ###
+##############
+config {
+    baseURL = http://localhost:8009/
+##  baseURL = https://qmh.sub.uni-goettingen.de/
+    absRefPrefix = http://localhost:8009
+##  absRefPrefix = https://qmh.sub.uni-goettingen.de/
+    index_enable = 1
+}
+
+
 ############
 ### PAGE ###
 ############
 page {
     logo {
-        file = EXT:tmpl_qmh/Resources/Public/Images/logo.svg
-        fileInverted = EXT:tmpl_qmh/Resources/Public/Images/logo-inverted.svg
+        file = EXT:tmpl_qmh/Resources/Public/Images/uni_logo.svg
+        #fileInverted = EXT:tmpl_qmh/Resources/Public/Images/uni-logo-inverted.svg
         height = 52
         width = 192
-        alt = tmpl qmh
-        linktitle = tmpl qmh
+        alt = uni_logo.svg
+        linktitle = Startseite - QM-Handbuch der Georg-August-Universität Göttingen
     }
     favicon {
-        file = EXT:tmpl_qmh/Resources/Public/Icons/favicon.ico
+        file = EXT:tmpl_qmh/Resources/Public/Icons/favicon.png
     }
     fluidtemplate {
         layoutRootPath = EXT:tmpl_qmh/Resources/Private/Layouts/Page/
         partialRootPath = EXT:tmpl_qmh/Resources/Private/Partials/Page/
         templateRootPath = EXT:tmpl_qmh/Resources/Private/Templates/Page/
+    }
+    preloader {
+        enable = 0
+    }
+    theme {
+        navigation.type = top
+        navigation.icon.enable = 1
+        navigation.dropdown.icon.enable = 1
+        subnavigation.icon.enable = 1
+        breadcrumb.enableLevel = 0
+        socialmedia.enable = 1
+        socialmedia.channels.facebook.url = https://www.facebook.com/georgiaaugusta
+        socialmedia.channels.twitter.url = https://twitter.com/unigoettingen
+        socialmedia.channels.instagram.url = https://www.instagram.com/unigoettingen/
+        socialmedia.channels.youtube.url = https://www.youtube.com/channel/UCzg-z2TL0Ks4Efz5o0z7AxQ
+        cookieconsent.enable = 0
+        copyright.text = &copy; ###CURRENTYEAR### Georg-August-Universität Göttingen
     }
 }
 
