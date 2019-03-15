@@ -11,3 +11,49 @@
 .navbar-mainnavigation {
   background-color: #13306a !important;
 }
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 0.5rem 0.5rem 0 0.5rem;
+}
+
+.card-menu .card-title {
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  text-align: right;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-menu .card-subtitle {
+  float: left;
+  color: rgb(255, 255, 255);
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: left;
+  margin: 1rem 0.2rem 0 0;
+}
+
+.card-body-uid-236 {
+  background-color: rgb(255, 85, 0);
+}
+
+.card-body-uid-237 {
+  background-color: rgb(153, 0, 0);
+}
+
+.card-body-uid-264 {
+  background-color: rgb(0, 51, 102);
+}
+
+.card-body-uid-280 {
+  background-color: rgb(0, 153, 204);
+}
+
+.card-body-uid-281 {
+  background-color: rgb(38, 115, 77);
+}
+
+.card-body-uid-285 {
+  background-color: rgb(129, 170, 9);
+}
