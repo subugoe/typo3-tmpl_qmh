@@ -1,35 +1,21 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:if condition="{languagenavigation}">
-    <div class="collapse navbar-collapse">
-        <ul id="language_menu" class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <f:for each="{languagenavigation}" as="item">
-                    <f:if condition="{item.active}">
-                        <f:then>
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">{item.navigationTitle} <b class="caret"></b></a>
-                        </f:then>
-                        <f:else>
-                        </f:else>
-                    </f:if>
-                </f:for>
-                <ul class="dropdown-menu">
-                    <f:for each="{languagenavigation}" as="item">
-                        <li class="{f:if(condition: item.active, then: 'active')} {f:if(condition: item.available, else: 'text-muted')}">
-                            <f:if condition="{item.available}">
-                                <f:then>
-                                    <a href="{item.link}" hreflang="{item.hreflang}" title="{item.title}">
-                                        <span>{item.navigationTitle}</span>
-                                    </a>
-                                </f:then>
-                                <f:else>
-                                    <span>{item.navigationTitle}</span>
-                                </f:else>
-                            </f:if>
-                        </li>
-                    </f:for>
-                </ul>
+    <ul id="language_menu" class="language-menu">
+        <f:for each="{languagenavigation}" as="item" iteration="language-iterator">
+            <li class="{f:if(condition: item.active, then: 'active')} {f:if(condition: item.available, else: 'text-muted')}">
+                <f:if condition="{item.available}">
+                    <f:then>
+                        <a href="{item.link}" hreflang="{item.hreflang}" title="{item.title}">
+                            <span>{item.twoLetterIsoCode}</span>
+                        </a>
+                    </f:then>
+                    <f:else>
+                        <span>{item.twoLetterIsoCode}</span>
+                    </f:else>
+                </f:if>
             </li>
-        </ul>
-    </div>
+            <span class="language-separator">{f:if(condition:"{language-iterator.isLast}==0", then:"|")}</span>
+        </f:for>
+    </ul>
 </f:if>
 </html>

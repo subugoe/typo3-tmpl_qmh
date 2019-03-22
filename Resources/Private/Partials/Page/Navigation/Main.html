@@ -23,7 +23,9 @@
                 <f:render partial="DropIn/Navigation/MainAfter" arguments="{_all}" />
             </nav>
             <f:if condition="{theme.language.enable}">
-                <f:render partial="Navigation/Language" arguments="{_all}" />
+                <div class="header-language">
+                    <f:render partial="Navigation/Language" arguments="{_all}" />
+                </div>
             </f:if>
 
         </f:if>
