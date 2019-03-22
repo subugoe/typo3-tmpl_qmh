@@ -3,4 +3,4 @@
  * Copyright 2017-2019 Marcus Hellmann
  * Licensed under the GPL-2.0-or-later license
  */
-console.log("WE LOVE TYPO3");
+

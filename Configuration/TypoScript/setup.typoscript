@@ -62,15 +62,15 @@ page {
 
         templateRootPaths {
             0 = {$page.fluidtemplate.templateRootPath}
-            1 = EXT:bootstrap_package/Resources/Private/Templates/Page/
+            #1 = EXT:bootstrap_package/Resources/Private/Templates/Page/
         }
         partialRootPaths {
-            #1 = EXT:bootstrap_package/Resources/Private/Partials/Page/
             0 = {$page.fluidtemplate.partialRootPath}
+            #1 = EXT:bootstrap_package/Resources/Private/Partials/Page/
         }
         layoutRootPaths {
-            0 = EXT:bootstrap_package/Resources/Private/Layouts/Page/
-            1 = {$page.fluidtemplate.layoutRootPath}
+            0 = {$page.fluidtemplate.layoutRootPath}
+            #1 = EXT:bootstrap_package/Resources/Private/Layouts/Page/
         }
         dataProcessing {
             1 = BK2K\BootstrapPackage\DataProcessing\ConstantsProcessor

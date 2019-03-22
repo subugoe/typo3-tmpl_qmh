@@ -11,7 +11,7 @@
                 <div class="card-menu-item">
 
                     <a href="{page.link}"{f:if(condition: page.target, then: ' target="{page.target}"')} title="{page.title}" class="thumbnail-menu-link" data-toggle="tooltip">
-                        <div class="card">
+                        <div class="card card-uid-{page.data.uid}">
                             <f:if condition="{page.files.0}">
                                 <div class="card-img-top">
                                     <f:render partial="Media/Rendering/Image" arguments="{file: page.files.0, data: page.data, settings: settings, variants: variants}" />
