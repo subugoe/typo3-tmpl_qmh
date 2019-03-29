@@ -17,7 +17,7 @@
                         <li class="subnav-divider"></li>
                     </f:then>
                     <f:else>
-                        <li class="subnav-item{f:if(condition: item.active, then:' active')}">
+                        <li class="subnav-item subnav-colorNav-{item.data.uid}{f:if(condition: item.active, then:' active')}">
                             <a href="{item.link}" id="subnav-item-{item.data.uid}" class="subnav-link"{f:if(condition: item.target, then: ' target="{item.target}"')} title="{item.title}">
                                 <f:if condition="{item.icon}">
                                     <span class="subnav-link-icon">
