@@ -43,6 +43,8 @@ page {
         navigation.type = top
         navigation.icon.enable = 1
         navigation.dropdown.icon.enable = 1
+        language.enable = 1
+        language.languageValue = 0,1
         subnavigation.icon.enable = 1
         breadcrumb.enable = 0
         breadcrumb.enableLevel = 0

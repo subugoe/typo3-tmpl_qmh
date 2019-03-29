@@ -13,21 +13,20 @@
                 <f:link.page pageUid="{rootPage}" class="navbar-brand navbar-brand-text" title="{settings.logo.linktitle}">{siteTitle}</f:link.page>
             </f:else>
         </f:if>
-        <f:if condition="{mainnavigation}">
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#mainnavigation" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <nav id="mainnavigation" class="collapse navbar-collapse">
-                <f:render partial="DropIn/Navigation/MainBefore" arguments="{_all}" />
-                <f:render section="MainNavigation" arguments="{menu: mainnavigation, theme: theme}" />
-                <f:render partial="DropIn/Navigation/MainAfter" arguments="{_all}" />
-            </nav>
-            <f:if condition="{theme.language.enable}">
-                <div class="header-language">
-                    <f:render partial="Navigation/Language" arguments="{_all}" />
-                </div>
-            </f:if>
-
+<f:if condition="{mainnavigation}">
+</f:if>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#mainnavigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <nav id="mainnavigation" class="collapse navbar-collapse">
+            <f:render partial="DropIn/Navigation/MainBefore" arguments="{_all}" />
+            <f:render section="MainNavigation" arguments="{menu: mainnavigation, theme: theme}" />
+            <f:render partial="DropIn/Navigation/MainAfter" arguments="{_all}" />
+        </nav>
+        <f:if condition="{theme.language.enable}">
+            <div class="header-language">
+                <f:render partial="Navigation/Language" arguments="{_all}" />
+            </div>
         </f:if>
     </div>
 </header>
