@@ -13,6 +13,14 @@ page {
     }
 
     includeJSLibs {
+        // jQuery api wird für die Bootstrap jQuery Funktionen gebraucht
+        file_01 = https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
+        file_01 {
+            external = 1
+            disableCompression = 1
+            excludeFromConcatenation = 1
+            forceontop = 1
+        }
 
     }
 
@@ -21,7 +29,6 @@ page {
     }
 
     includeJSFooterlibs {
-
     }
 
     includeJSFooter {

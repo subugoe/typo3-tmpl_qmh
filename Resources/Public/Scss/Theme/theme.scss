@@ -101,30 +101,11 @@
 //
 // Subnavigation
 //
-@include media-breakpoint-up('lg') {
-  .backendlayout-subnavigation_right,
-  .backendlayout-subnavigation_left {
-    .subnav-wrap {
-      .frame-type-subnavigation {
-        display: block;
-      }
-      .frame-container {
-        display: flex;
-      }
-    }
-  }
-  .frame-type-subnavigation + .subnavcont {
-    @extend .frame-collapsible;
-  }
-  .subnavcont-main {
-    display: none !important;
-  }
-}
-
 @include media-breakpoint-down('lg') {
   .backendlayout-subnavigation_right,
   .backendlayout-subnavigation_left {
     .maincontent-wrap {
+      min-height: 200px;
       .subnavcont-main {
         display: block;
       }
@@ -156,18 +137,26 @@
       order: 1;
     }
   }
-  .backendlayout-subnavigation_right .subnav-wrap {
-    // sticky sidebar right //
-    position: fixed;
-    right: 1%;
-    z-index: 1010;
+  .backendlayout-subnavigation_right,
+  .backendlayout-subnavigation_left {
+    .subnav-wrap {
+      // sticky sidebar right //
+      //position: fixed;
+      right: 1%;
+      z-index: 1010;
+      .frame-type-subnavigation {
+        display: block;
+      }
+      .frame-container {
+        display: flex;
+      }
+    }
   }
-  .backendlayout-subnavigation_right .subnav-wrap + .invisibleElementGroup {
-    // sticky sidebar right :: invisible Element Group in Background for correct page heights //
-    position: fixed;
-    --heightTotal: calc(100% + 10px);
-    top: var(--heightTotal);
-    opacity: 0;
+  .frame-type-subnavigation + .subnavcont {
+    @extend .frame-collapsible;
+  }
+  .subnavcont-main {
+    display: none !important;
   }
 }
 

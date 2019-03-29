@@ -18,12 +18,6 @@
                         <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{pageUid: '{data.uid}', colPos: '2'}"/>
                     </div>
                 </div>
-                <div class="section-column subnav-wrap invisibleElementGroup">
-                    <f:render partial="Navigation/Subnavigation" arguments="{_all}" />
-                    <div class="complementary subnavcont" role="complementary">
-                        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{pageUid: '{data.uid}', colPos: '2'}"/>
-                    </div>
-                </div>
                 <main class="section-column maincontent-wrap" role="main">
                     <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{pageUid: '{data.uid}', colPos: '0', slide: '{theme.pagelayout.{pagelayout}.colPos.0.slide}'}" />
                     <div class="complementary subnavcont-main" role="complementary">
@@ -36,10 +30,14 @@
 
     <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{pageUid: '{data.uid}', colPos: '9', slide: '{theme.pagelayout.{pagelayout}.colPos.9.slide}'}" />
 
+    <script>
+    </script>
+
 </f:section>
 <f:section name="Footer">
 
     <f:render partial="Structure/FooterContent" arguments="{_all}" />
 
 </f:section>
+
 </html>
