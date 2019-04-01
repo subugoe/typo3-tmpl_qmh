@@ -43,6 +43,7 @@ page {
         navigation.type = top
         navigation.icon.enable = 1
         navigation.dropdown.icon.enable = 1
+        navigation.style = default
         language.enable = 1
         language.languageValue = 0,1
         subnavigation.icon.enable = 1
