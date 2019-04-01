@@ -195,16 +195,30 @@ lib.PREV_NEXT {
     wrap = <div class="prevNext">|</div>
     10 = HMENU
     10 {
-        entryLevel = 0
         special = browse
         special {
             items = prev
             items.prevnextToSection = 0
-            prev.fields.title = «
         }
         1 = TMENU
         1 {
             NO = 1
+            NO {
+                doNotLinkIt = 1
+                stdWrap.cObject = COA
+                stdWrap.cObject {
+                    10 = TEXT
+                    10 {
+                        field = title
+                        typolink {
+                            parameter.field = uid
+                            returnLast = url
+                        }
+                        wrap = <a href="|" title="{field:title}" class="btn-prev">« {field:title}</a>
+                        insertData = 1
+                    }
+                }
+            }
         }
         stdWrap.ifEmpty.cObject = HMENU
         stdWrap.ifEmpty.cObject{
@@ -212,27 +226,56 @@ lib.PREV_NEXT {
             special {
                 items = last
                 items.prevsection = 1
-                items.prevnextToSection = 0
-                last.fields.title = «
+                items.prevnextToSection = 1
             }
             1 = TMENU
             1 {
                 NO = 1
+                NO {
+                    doNotLinkIt = 1
+                    stdWrap.cObject = COA
+                    stdWrap.cObject {
+                        10 = TEXT
+                        10 {
+                            field = title
+                            typolink {
+                                parameter.field = uid
+                                returnLast = url
+                            }
+                            wrap = <a href="|" title="{field:title}" class="btn-prev">«&nbsp;{field:title}</a>
+                            insertData = 1
+                        }
+                    }
+                }
             }
         }
     }
     20 = HMENU
     20 {
-        entryLevel = 3
         special = browse
         special {
             items = next
             items.prevnextToSection = 0
-            next.fields.title = »
         }
         1 = TMENU
         1 {
             NO = 1
+            NO {
+                doNotLinkIt = 1
+                stdWrap.cObject = COA
+                stdWrap.cObject {
+                    10 = TEXT
+                    10 {
+                        field = title
+                        typolink {
+                            parameter.field = uid
+                            returnLast = url
+                        }
+                        wrap = <a href="|" title="{field:title}" class="btn-next">{field:title}&nbsp;»</a>
+                        insertData = 1
+                    }
+                }
+            }
         }
         stdWrap.ifEmpty.cObject = HMENU
         stdWrap.ifEmpty.cObject{
@@ -240,12 +283,27 @@ lib.PREV_NEXT {
             special {
                 items = first
                 items.nextsection = 1
-                items.prevnextToSection = 0
-                first.fields.title = »
+                items.prevnextToSection = 1
             }
             1 = TMENU
             1 {
                 NO = 1
+                NO {
+                doNotLinkIt = 1
+                stdWrap.cObject = COA
+                stdWrap.cObject {
+                    10 = TEXT
+                    10 {
+                        field = title
+                        typolink {
+                            parameter.field = uid
+                            returnLast = url
+                        }
+                        wrap = <a href="|" title="{field:title}" class="btn-next">{field:title}&nbsp;»</a>
+                        insertData = 1
+                    }
+                }
+                }
             }
         }
     }

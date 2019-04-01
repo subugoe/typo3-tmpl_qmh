@@ -305,6 +305,32 @@
 
 
 //
+// Previous / Next
+//
+.btn-prev {
+  float: left;
+}
+.btn-next {
+  float: right;
+}
+
+.btn-prev, .btn-next {
+  padding: 0.3rem 0.6rem;
+  color: var(--primary);
+  background-color: #f8f8f8;
+  border-color: transparent;
+}
+
+.btn-prev:hover, .btn-next:hover {
+  color: darken($link-color, 15%);
+  background-color: #f2f2f2;
+  border-color: #d9d9d9;
+  text-decoration: none !important;
+}
+
+
+
+//
 // Footer
 //
 .bp-page-footer {
