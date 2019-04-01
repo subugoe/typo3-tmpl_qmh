@@ -6,21 +6,21 @@
 
 $(function () {
 
+    var heightDocument = $(document).height();
+    var heightViewport = $(window).height();
+    var heightFooterHalf = Math.trunc($('#page-footer').height() * 0.2);
+
+    var maxPaddingTop = heightDocument - heightViewport - heightFooterHalf;
+
     $(window).on('resize, scroll', function () {
 
-        var heightDocument = $(document).height();
-        var heightViewport = $(window).height();
         var heightHeader = $('#page-header').height();
-        var heightFooterHalf = $('#page-footer').height() * 0.2;
-
-        var scrollHeight = heightDocument - heightViewport - heightFooterHalf;
-
         var headerScrolled = $(window).scrollTop();
 
         if (headerScrolled > 150) {
             $('.subnav-wrap').css('padding-top', headerScrolled-heightHeader);
-            if (headerScrolled > scrollHeight) {
-                $('.subnav-wrap').css('padding-top', scrollHeight-heightHeader);
+            if (headerScrolled > maxPaddingTop) {
+                $('.subnav-wrap').css('padding-top', maxPaddingTop-heightHeader);
             }
         } else {
             $('.subnav-wrap').css('padding-top', headerScrolled);

@@ -12,11 +12,53 @@
   background-color: #13306a !important;
 }
 
-/*.breadcrumb-fixed {
-  position: fixed;
-  z-index: 1010;
-  width: 100%;
-}*/
+@include media-breakpoint-down('lg') {
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #f2f2f2;
+  }
+
+  .breadcrumb-item + .breadcrumb-item {
+    padding-left: 0.5rem;
+  }
+
+  .breadcrumb-item + .breadcrumb-item::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    color: #6c757d;
+    content: "/";
+  }
+
+  .breadcrumb-item + .breadcrumb-item:hover::before {
+    text-decoration: underline;
+  }
+
+  .breadcrumb-item + .breadcrumb-item:hover::before {
+    text-decoration: none;
+  }
+
+  .breadcrumb-item.active {
+    color: #6c757d;
+  }
+  .breadcrumb-section {
+    display: block;
+  }
+  .breadcrumb-fixed {
+    //position: fixed;
+    z-index: 1010;
+    width: 100%;
+  }
+}
+
+@include media-breakpoint-up('lg') {
+  .breadcrumb-section {
+    display: none !important;
+  }
+}
 
 .card-body {
   flex: 1 1 auto;
@@ -94,7 +136,7 @@
 }
 
 //
-// Subnavigation
+// Subnavigation Bar
 //
 @include media-breakpoint-down('lg') {
   .backendlayout-subnavigation_right,
@@ -106,11 +148,15 @@
       }
     }
   }
-  .frame-type-subnavigation + .subnavcont {
-    @extend .frame-collapsible;
+  .frame-type-subnavigation {
+    .subnavcont {
+      @extend .frame-collapsible;
+    }
   }
   .subnavcont-main {
     @extend .frame-collapsible;
+    -webkit-margin-before: 0.1rem;
+    border-top: 0.05rem solid #ddd;
   }
 }
 
@@ -136,9 +182,7 @@
   .backendlayout-subnavigation_left {
     .subnav-wrap {
       // sticky sidebar right //
-      //position: fixed;
-      right: 1%;
-      z-index: 1010;
+      z-index: 1009;
       .frame-type-subnavigation {
         display: block;
       }
@@ -175,22 +219,27 @@
 }
 
 .subnav-colorNav-236.active {
-  border-left: 0.35rem solid rgb(255, 85, 0);
+  border-left: 0.45rem solid rgb(255, 85, 0);
 }
 .subnav-colorNav-237.active {
-  border-left: 0.35rem solid rgb(153, 0, 0);
+  border-left: 0.45rem solid rgb(153, 0, 0);
 }
 .subnav-colorNav-264.active {
-  border-left: 0.35rem solid rgb(0, 51, 102);
+  border-left: 0.45rem solid rgb(0, 51, 102);
 }
 .subnav-colorNav-280.active {
-  border-left: 0.35rem solid rgb(0, 153, 204);
+  border-left: 0.45rem solid rgb(0, 153, 204);
 }
 .subnav-colorNav-281.active {
-  border-left: 0.35rem solid rgb(38, 115, 77);
+  border-left: 0.45rem solid rgb(38, 115, 77);
 }
 .subnav-colorNav-285.active {
-  border-left: 0.35rem solid rgb(129, 170, 9);
+  border-left: 0.45rem solid rgb(129, 170, 9);
+}
+
+.subnav-link.current {
+  background-color: #f8f8f8;
+  font-weight: bold;
 }
 
 .subnav-item {
@@ -204,6 +253,14 @@
   border-right: none;
   border-bottom: 1px solid #e6e6e6;
   border-left: none;
+}
+
+.subnav-wrap {
+  -webkit-transition: padding 0.6s;
+  -moz-transition: padding 0.6s;
+  -ms-transition: padding 0.6s;
+  -o-transition: padding 0.6s;
+  transition: padding 0.6s;
 }
 
 
@@ -243,4 +300,13 @@
 
 .header-language .language-menu .active a {
   font-weight: bold;
+}
+
+
+
+//
+// Footer
+//
+.bp-page-footer {
+  padding-top: 3rem;
 }
