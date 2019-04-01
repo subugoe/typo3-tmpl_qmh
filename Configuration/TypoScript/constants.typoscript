@@ -46,7 +46,7 @@ page {
         language.enable = 1
         language.languageValue = 0,1
         subnavigation.icon.enable = 1
-        breadcrumb.enable = 0
+        breadcrumb.enable = 1
         breadcrumb.enableLevel = 0
         socialmedia.enable = 1
         socialmedia.channels.facebook.url = https://www.facebook.com/georgiaaugusta
