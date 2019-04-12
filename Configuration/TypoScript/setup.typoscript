@@ -68,16 +68,16 @@ page {
         }
 
         templateRootPaths {
-            0 = {$page.fluidtemplate.templateRootPath}
-            #1 = EXT:bootstrap_package/Resources/Private/Templates/Page/
+            0 = EXT:bootstrap_package/Resources/Private/Templates/Page/
+            1 = {$page.fluidtemplate.templateRootPath}
         }
         partialRootPaths {
-            0 = {$page.fluidtemplate.partialRootPath}
-            #1 = EXT:bootstrap_package/Resources/Private/Partials/Page/
+            0 = EXT:bootstrap_package/Resources/Private/Partials/Page/
+            1 = {$page.fluidtemplate.partialRootPath}
         }
         layoutRootPaths {
-            0 = {$page.fluidtemplate.layoutRootPath}
-            #1 = EXT:bootstrap_package/Resources/Private/Layouts/Page/
+            0 = EXT:bootstrap_package/Resources/Private/Layouts/Page/
+            1 = {$page.fluidtemplate.layoutRootPath}
         }
         dataProcessing {
             1 = BK2K\BootstrapPackage\DataProcessing\ConstantsProcessor
@@ -169,6 +169,38 @@ page {
                 }
             }
         }
+    }
+}
+
+
+#########################
+#### INDEXED SEARCH  ####
+#########################
+plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang < config.sys_language_uid
+plugin.tx_indexedsearch {
+    forwardSearchWordsInResultLink = 1
+    view {
+        templateRootPaths {
+            0 = EXT:indexed_search/Resources/Private/Templates/
+            10 = {$plugin.tx_indexedsearch.view.templateRootPath}
+            20 = EXT:tmpl_qmh/Resources/Private/Templates/IndexedSearch/
+        }
+        partialRootPaths {
+            0 = EXT:indexed_search/Resources/Private/Partials/
+            10 = {$plugin.tx_indexedsearch.view.partialRootPath}
+            20 = EXT:tmpl_qmh/Resources/Private/Partials/IndexedSearch/
+        }
+    }
+    settings {
+        breadcrumbWrap = /||/
+        displayResultNumber = 1
+        displayAdvancedSearchLink = 0
+        blind.numberOfResults = 25
+        results {
+            markupSW_summaryMax = 300
+            markupSW_postPreLgd = 60
+        }
+        targetPid = 423
     }
 }
 

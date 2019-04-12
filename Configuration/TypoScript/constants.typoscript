@@ -12,7 +12,6 @@ config {
 ##  baseURL = https://qmh.sub.uni-goettingen.de/
     absRefPrefix = http://localhost:8009
 ##  absRefPrefix = https://qmh.sub.uni-goettingen.de/
-    index_enable = 1
 }
 
 
@@ -57,6 +56,9 @@ page {
         cookieconsent.enable = 0
         copyright.text = &copy; ###CURRENTYEAR### Georg-August-Universität Göttingen
     }
+    config {
+        index_enable = 1
+    }
 }
 
 
@@ -68,6 +70,12 @@ plugin.bootstrap_package {
         layoutRootPath = EXT:tmpl_qmh/Resources/Private/Layouts/
         partialRootPath = EXT:tmpl_qmh/Resources/Private/Partials/
         templateRootPath = EXT:tmpl_qmh/Resources/Private/Templates/
+    }
+}
+plugin.tx_indexedsearch {
+    view {
+        templateRootPath = EXT:tmpl_qmh/Resources/Private/Templates/IndexedSearch/
+        partialRootPaths = EXT:tmpl_qmh/Resources/Private/Partials/IndexedSearch/
     }
 }
 

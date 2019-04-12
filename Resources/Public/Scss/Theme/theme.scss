@@ -12,6 +12,15 @@
   background-color: #13306a !important;
 }
 
+.tx-indexedsearch-searchbox-sword-input-group-header {
+  //clear: both;
+  float: right;
+  height: 1.7rem;
+  .form-control, .input-group-btn .btn {
+    height: 1.7rem;
+  }
+}
+
 @include media-breakpoint-down('lg') {
   .breadcrumb {
     display: flex;
