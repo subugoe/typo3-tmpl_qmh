@@ -100,7 +100,7 @@ page {
             }
             10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
             10 {
-                levels = 10
+                levels = 80
                 expandAll = 1
                 includeSpacer = 1
                 as = mainnavigation
@@ -126,7 +126,7 @@ page {
             20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
             20 {
                 entryLevel = 1
-                levels = 10
+                levels = 80
                 expandAll = 0
                 includeSpacer = 1
                 as = subnavigation

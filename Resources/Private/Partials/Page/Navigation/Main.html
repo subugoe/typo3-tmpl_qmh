@@ -111,8 +111,8 @@
                                                 <li class="dropdown-divider"></li>
                                             </f:then>
                                             <f:else>
-                                                <li>
-                                                    <a href="{child.link}" class="dropdown-item{f:if(condition: child.active, then:' active')}{f:if(condition: child.children, then:' dropdown-toggle')}"{f:if(condition: child.target, then: ' target="{child.target}"')} title="{child.title}">
+                                                <li class="nav-item{f:if(condition: child.active, then:' active')}{f:if(condition: child.children, then:' dropdown dropdown-hover')}">
+                                                    <a href="{child.link}" class="nav-link{f:if(condition: child.active, then:' active')}{f:if(condition: child.children, then:' dropdown-toggle')}"{f:if(condition: child.target, then: ' target="{child.target}"')} title="{child.title}">
                                                         <f:if condition="{theme.navigation.dropdown.icon.enable} && {child.icon}">
                                                             <span class="dropdown-icon">
                                                                 <f:if condition="{child.icon.0.extension} === svg">
@@ -135,8 +135,8 @@
                                                                         <li class="dropdown-divider"></li>
                                                                     </f:then>
                                                                     <f:else>
-                                                                        <li>
-                                                                            <a href="{child_lvl2.link}" class="dropdown-item{f:if(condition: child_lvl2.active, then:' active')}"{f:if(condition: child.target, then: ' target="{child.target}"')} title="{child.title}">
+                                                                        <li class="nav-item{f:if(condition: child_lvl2.active, then:' active')}{f:if(condition: child_lvl2.children, then:' dropdown dropdown-hover')}">
+                                                                            <a href="{child_lvl2.link}" class="nav-link{f:if(condition: child_lvl2.active, then:' active')}{f:if(condition: child_lvl2.children, then:' dropdown-toggle')}"{f:if(condition: child_lvl2.target, then: ' target="{child_lvl2.target}"')} title="{child_lvl2.title}">
                                                                             <f:if condition="{theme.navigation.dropdown.icon.enable} && {child_lvl2.icon}">
                                                                                 <span class="dropdown-icon">
                                                                                     <f:if condition="{child_lvl2.icon.0.extension} === svg">
@@ -151,6 +151,156 @@
                                                                             </f:if>
                                                                             <span class="dropdown-text">{child_lvl2.title}<f:if condition="{child_lvl2.current}"> <span class="sr-only">(current)</span></f:if></span>
                                                                             </a>
+                                                                            <f:if condition="{child_lvl2.children}">
+                                                                            <ul class="dropdown-menu" aria-labelledby="nav-item-{child_lvl2.data.uid}">
+                                                                                <f:for each="{child_lvl2.children}" as="child_lvl3">
+                                                                                    <f:if condition="{child_lvl3.spacer}">
+                                                                                        <f:then>
+                                                                                            <li class="dropdown-divider"></li>
+                                                                                        </f:then>
+                                                                                        <f:else>
+                                                                                            <li class="nav-item{f:if(condition: child_lvl3.active, then:' active')}{f:if(condition: child_lvl3.children, then:' dropdown dropdown-hover')}">
+                                                                                                <a href="{child_lvl3.link}" class="nav-link{f:if(condition: child_lvl3.active, then:' active')}{f:if(condition: child_lvl3.children, then:' dropdown-toggle')}"{f:if(condition: child_lvl3.target, then: ' target="{child_lvl3.target}"')} title="{child_lvl3.title}">
+                                                                                                <f:if condition="{theme.navigation.dropdown.icon.enable} && {child_lvl3.icon}">
+                                                                                                    <span class="dropdown-icon">
+                                                                                                        <f:if condition="{child_lvl3.icon.0.extension} === svg">
+                                                                                                            <f:then>
+                                                                                                                <bk2k:inlineSvg image="{child_lvl3.icon.0}" width="{theme.navigation.dropdown.icon.width}" height="{theme.navigation.dropdown.icon.height}" />
+                                                                                                            </f:then>
+                                                                                                            <f:else>
+                                                                                                                <f:image image="{child_lvl3.icon.0}" alt="{child_lvl3.icon.0.alternative}" title="{child_lvl3.icon.0.title}" width="{theme.navigation.dropdown.icon.width}" height="{theme.navigation.dropdown.icon.height}" />
+                                                                                                            </f:else>
+                                                                                                        </f:if>
+                                                                                                    </span>
+                                                                                                </f:if>
+                                                                                                <span class="dropdown-text">{child_lvl3.title}<f:if condition="{child_lvl3.current}"> <span class="sr-only">(current)</span></f:if></span>
+                                                                                                </a>
+                                                                                                <f:if condition="{child_lvl3.children}">
+                                                                                                    <ul class="dropdown-menu" aria-labelledby="nav-item-{child_lvl3.data.uid}">
+                                                                                                        <f:for each="{child_lvl3.children}" as="child_lvl4">
+                                                                                                            <f:if condition="{child_lvl4.spacer}">
+                                                                                                                <f:then>
+                                                                                                                    <li class="dropdown-divider"></li>
+                                                                                                                </f:then>
+                                                                                                                <f:else>
+                                                                                                                    <li class="nav-item{f:if(condition: child_lvl4.active, then:' active')}{f:if(condition: child_lvl4.children, then:' dropdown dropdown-hover')}">
+                                                                                                                        <a href="{child_lvl4.link}" class="nav-link{f:if(condition: child_lvl4.active, then:' active')}{f:if(condition: child_lvl4.children, then:' dropdown-toggle')}"{f:if(condition: child_lvl4.target, then: ' target="{child_lvl4.target}"')} title="{child_lvl4.title}">
+                                                                                                                        <f:if condition="{theme.navigation.dropdown.icon.enable} && {child_lvl4.icon}">
+                                                                                                                            <span class="dropdown-icon">
+                                                                                                                                <f:if condition="{child_lvl4.icon.0.extension} === svg">
+                                                                                                                                    <f:then>
+                                                                                                                                        <bk2k:inlineSvg image="{child_lvl4.icon.0}" width="{theme.navigation.dropdown.icon.width}" height="{theme.navigation.dropdown.icon.height}" />
+                                                                                                                                    </f:then>
+                                                                                                                                    <f:else>
+                                                                                                                                        <f:image image="{child_lvl4.icon.0}" alt="{child_lvl4.icon.0.alternative}" title="{child_lvl4.icon.0.title}" width="{theme.navigation.dropdown.icon.width}" height="{theme.navigation.dropdown.icon.height}" />
+                                                                                                                                    </f:else>
+                                                                                                                                </f:if>
+                                                                                                                            </span>
+                                                                                                                        </f:if>
+                                                                                                                        <span class="dropdown-text">{child_lvl4.title}<f:if condition="{child_lvl4.current}"> <span class="sr-only">(current)</span></f:if></span>
+                                                                                                                        </a>
+                                                                                                                        <f:if condition="{child_lvl4.children}">
+                                                                                                                            <ul class="dropdown-menu" aria-labelledby="nav-item-{child_lvl4.data.uid}">
+                                                                                                                                <f:for each="{child_lvl4.children}" as="child_lvl5">
+                                                                                                                                    <f:if condition="{child_lvl5.spacer}">
+                                                                                                                                        <f:then>
+                                                                                                                                            <li class="dropdown-divider"></li>
+                                                                                                                                        </f:then>
+                                                                                                                                        <f:else>
+                                                                                                                                            <li class="nav-item{f:if(condition: child_lvl5.active, then:' active')}{f:if(condition: child_lvl5.children, then:' dropdown dropdown-hover')}">
+                                                                                                                                                <a href="{child_lvl5.link}" class="nav-link{f:if(condition: child_lvl5.active, then:' active')}{f:if(condition: child_lvl5.children, then:' dropdown-toggle')}"{f:if(condition: child_lvl5.target, then: ' target="{child_lvl5.target}"')} title="{child_lvl5.title}">
+                                                                                                                                                <f:if condition="{theme.navigation.dropdown.icon.enable} && {child_lvl5.icon}">
+                                                                                                                                                    <span class="dropdown-icon">
+                                                                                                                                                        <f:if condition="{child_lvl5.icon.0.extension} === svg">
+                                                                                                                                                            <f:then>
+                                                                                                                                                                <bk2k:inlineSvg image="{child_lvl5.icon.0}" width="{theme.navigation.dropdown.icon.width}" height="{theme.navigation.dropdown.icon.height}" />
+                                                                                                                                                            </f:then>
+                                                                                                                                                            <f:else>
+                                                                                                                                                                <f:image image="{child_lvl5.icon.0}" alt="{child_lvl5.icon.0.alternative}" title="{child_lvl5.icon.0.title}" width="{theme.navigation.dropdown.icon.width}" height="{theme.navigation.dropdown.icon.height}" />
+                                                                                                                                                            </f:else>
+                                                                                                                                                        </f:if>
+                                                                                                                                                    </span>
+                                                                                                                                                </f:if>
+                                                                                                                                                <span class="dropdown-text">{child_lvl5.title}<f:if condition="{child_lvl5.current}"> <span class="sr-only">(current)</span></f:if></span>
+                                                                                                                                                </a>
+                                                                                                                                                <f:if condition="{child_lvl5.children}">
+                                                                                                                                                    <ul class="dropdown-menu" aria-labelledby="nav-item-{child_lvl5.data.uid}">
+                                                                                                                                                        <f:for each="{child_lvl5.children}" as="child_lvl6">
+                                                                                                                                                            <f:if condition="{child_lvl6.spacer}">
+                                                                                                                                                                <f:then>
+                                                                                                                                                                    <li class="dropdown-divider"></li>
+                                                                                                                                                                </f:then>
+                                                                                                                                                                <f:else>
+                                                                                                                                                                    <li class="nav-item{f:if(condition: child_lvl6.active, then:' active')}{f:if(condition: child_lvl6.children, then:' dropdown dropdown-hover')}">
+                                                                                                                                                                        <a href="{child_lvl6.link}" class="nav-link{f:if(condition: child_lvl6.active, then:' active')}{f:if(condition: child_lvl6.children, then:' dropdown-toggle')}"{f:if(condition: child_lvl6.target, then: ' target="{child_lvl6.target}"')} title="{child_lvl6.title}">
+                                                                                                                                                                        <f:if condition="{theme.navigation.dropdown.icon.enable} && {child_lvl6.icon}">
+                                                                                                                                                                            <span class="dropdown-icon">
+                                                                                                                                                                                <f:if condition="{child_lvl6.icon.0.extension} === svg">
+                                                                                                                                                                                    <f:then>
+                                                                                                                                                                                        <bk2k:inlineSvg image="{child_lvl6.icon.0}" width="{theme.navigation.dropdown.icon.width}" height="{theme.navigation.dropdown.icon.height}" />
+                                                                                                                                                                                    </f:then>
+                                                                                                                                                                                    <f:else>
+                                                                                                                                                                                        <f:image image="{child_lvl6.icon.0}" alt="{child_lvl6.icon.0.alternative}" title="{child_lvl6.icon.0.title}" width="{theme.navigation.dropdown.icon.width}" height="{theme.navigation.dropdown.icon.height}" />
+                                                                                                                                                                                    </f:else>
+                                                                                                                                                                                </f:if>
+                                                                                                                                                                            </span>
+                                                                                                                                                                        </f:if>
+                                                                                                                                                                        <span class="dropdown-text">{child_lvl6.title}<f:if condition="{child_lvl6.current}"> <span class="sr-only">(current)</span></f:if></span>
+                                                                                                                                                                        </a>
+                                                                                                                                                                        <f:if condition="{child_lvl6.children}">
+                                                                                                                                                                            <ul class="dropdown-menu" aria-labelledby="nav-item-{child_lvl6.data.uid}">
+                                                                                                                                                                                <f:for each="{child_lvl6.children}" as="child_lvl7">
+                                                                                                                                                                                    <f:if condition="{child_lvl7.spacer}">
+                                                                                                                                                                                        <f:then>
+                                                                                                                                                                                            <li class="dropdown-divider"></li>
+                                                                                                                                                                                        </f:then>
+                                                                                                                                                                                        <f:else>
+                                                                                                                                                                                            <li class="nav-item{f:if(condition: child_lvl7.active, then:' active')}{f:if(condition: child_lvl7.children, then:' dropdown dropdown-hover')}">
+                                                                                                                                                                                                <a href="{child_lvl7.link}" class="nav-link{f:if(condition: child_lvl7.active, then:' active')}{f:if(condition: child_lvl7.children, then:' dropdown-toggle')}"{f:if(condition: child_lvl7.target, then: ' target="{child_lvl7.target}"')} title="{child_lvl7.title}">
+                                                                                                                                                                                                <f:if condition="{theme.navigation.dropdown.icon.enable} && {child_lvl7.icon}">
+                                                                                                                                                                                                    <span class="dropdown-icon">
+                                                                                                                                                                                                        <f:if condition="{child_lvl7.icon.0.extension} === svg">
+                                                                                                                                                                                                            <f:then>
+                                                                                                                                                                                                                <bk2k:inlineSvg image="{child_lvl7.icon.0}" width="{theme.navigation.dropdown.icon.width}" height="{theme.navigation.dropdown.icon.height}" />
+                                                                                                                                                                                                            </f:then>
+                                                                                                                                                                                                            <f:else>
+                                                                                                                                                                                                                <f:image image="{child_lvl7.icon.0}" alt="{child_lvl7.icon.0.alternative}" title="{child_lvl7.icon.0.title}" width="{theme.navigation.dropdown.icon.width}" height="{theme.navigation.dropdown.icon.height}" />
+                                                                                                                                                                                                            </f:else>
+                                                                                                                                                                                                        </f:if>
+                                                                                                                                                                                                    </span>
+                                                                                                                                                                                                </f:if>
+                                                                                                                                                                                                <span class="dropdown-text">{child_lvl7.title}<f:if condition="{child_lvl7.current}"> <span class="sr-only">(current)</span></f:if></span>
+                                                                                                                                                                                                </a>
+                                                                                                                                                                                            </li>
+                                                                                                                                                                                        </f:else>
+                                                                                                                                                                                    </f:if>
+                                                                                                                                                                                </f:for>
+                                                                                                                                                                            </ul>
+                                                                                                                                                                        </f:if>
+                                                                                                                                                                    </li>
+                                                                                                                                                                </f:else>
+                                                                                                                                                            </f:if>
+                                                                                                                                                        </f:for>
+                                                                                                                                                    </ul>
+                                                                                                                                                </f:if>
+                                                                                                                                            </li>
+                                                                                                                                        </f:else>
+                                                                                                                                    </f:if>
+                                                                                                                                </f:for>
+                                                                                                                            </ul>
+                                                                                                                        </f:if>
+                                                                                                                    </li>
+                                                                                                                </f:else>
+                                                                                                            </f:if>
+                                                                                                        </f:for>
+                                                                                                    </ul>
+                                                                                                </f:if>
+                                                                                            </li>
+                                                                                        </f:else>
+                                                                                    </f:if>
+                                                                                </f:for>
+                                                                            </ul>
+                                                                        </f:if>
                                                                         </li>
                                                                     </f:else>
                                                                 </f:if>
