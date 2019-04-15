@@ -1,4 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:is="http://typo3.org/ns/TYPO3/CMS/IndexedSearch/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
 <f:alias map="{sword: searchParams.sword}">
     <f:render partial="Form" arguments="{_all}" />
 </f:alias>
@@ -63,7 +64,15 @@
                     </f:else>
                 </f:if>
             </f:for>
-            <is:pageBrowsing numberOfResults="{result.count}" maximumNumberOfResultPages="{settings.page_links}" currentPage="{searchParams.pointer}" resultsPerPage="{searchParams.numberOfResults}" />
+            <f:format.raw>
+                <v:format.replace substring="Page " replacement="">
+                    <v:format.replace substring="Next " replacement="">
+                        <v:format.replace substring=" Previous" replacement="">
+                            <is:pageBrowsing numberOfResults="{result.count}" maximumNumberOfResultPages="{settings.page_links}" currentPage="{searchParams.pointer}" resultsPerPage="{searchParams.numberOfResults}" />
+                        </v:format.replace>
+                    </v:format.replace>
+                </v:format.replace>
+            </f:format.raw>
         </f:then>
         <f:else>
             <div class="alert alert-info">

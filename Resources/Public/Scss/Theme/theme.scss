@@ -158,6 +158,19 @@
   }
 }
 
+.tx-indexedsearch-browsebox {
+  > li {
+    display: inline-block;
+    &:not(:last-child) {
+      margin-right: $list-inline-padding;
+    }
+  }
+  display: flex;
+  justify-content: center;
+  padding-top: 1.5rem;
+  padding-inline-start: 0px;
+}
+
 
 
 //
