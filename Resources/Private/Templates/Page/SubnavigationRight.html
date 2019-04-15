@@ -21,15 +21,23 @@
                     </div>
                 </div>
                 <main class="section-column maincontent-wrap" role="main">
-                    <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{pageUid: '{data.uid}', colPos: '0', slide: '{theme.pagelayout.{pagelayout}.colPos.0.slide}'}" />
+                    <!--TYPO3SEARCH_begin-->
+                        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{pageUid: '{data.uid}', colPos: '0', slide: '{theme.pagelayout.{pagelayout}.colPos.0.slide}'}" />
+                    <!--TYPO3SEARCH_end-->
                     <div class="complementary subnavcont-main" role="complementary">
                         <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{pageUid: '{data.uid}', colPos: '2', slide: '{theme.pagelayout.{pagelayout}.colPos.2.slide}'}" />
                     </div>
                     <v:condition.string.contains haystack="{data.slug}" needle="/handbuch/">
                         <f:then>
-                            <f:debug>{data.slug}</f:debug>
                             <f:cObject typoscriptObjectPath="lib.PREV_NEXT" />
                         </f:then>
+                        <f:else>
+                            <v:condition.string.contains haystack="{data.slug}" needle="/en/qm-guide/">
+                                <f:then>
+                                    <f:cObject typoscriptObjectPath="lib.PREV_NEXT" />
+                                </f:then>
+                            </v:condition.string.contains>
+                        </f:else>
                     </v:condition.string.contains>
                 </main>
             </div>

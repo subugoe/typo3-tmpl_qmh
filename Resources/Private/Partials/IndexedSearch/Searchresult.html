@@ -1,4 +1,4 @@
-<div class="media">
+<div class="media indexed-search-result">
     <div class="media-body">
         <h4 class="media-heading">
             <f:if condition="{settings.displayResultNumber}">
@@ -8,7 +8,7 @@
         </h4>
         <f:if condition="{row.headerOnly} == 0">
             <p><f:format.crop maxCharacters="{settings.results.summaryCropAfter}">{row.item_description}</f:format.crop></p>
-            <ul class="list-inline">
+            <ul class="list-unstyled">
                 <li><strong><f:translate key="result.modified" /></strong> <f:format.date>@{row.modified}</f:format.date></li>
                 <li><strong><f:translate key="result.path" /></strong> <f:format.raw>{row.path}</f:format.raw></li>
             </ul>

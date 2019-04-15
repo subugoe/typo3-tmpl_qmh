@@ -79,16 +79,17 @@ page {
             0 = EXT:bootstrap_package/Resources/Private/Layouts/Page/
             1 = {$page.fluidtemplate.layoutRootPath}
         }
+        languageRootPath = EXT:tmpl_qmh/Resources/Private/Language/
         dataProcessing {
             1 = BK2K\BootstrapPackage\DataProcessing\ConstantsProcessor
             1 {
                 as = theme
                 key = page.theme
             }
-            2 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
-            2 {
-                entryLevel = 0
+            10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            10 {
                 levels = 10
+                expandAll = 1
                 includeSpacer = 1
                 as = mainnavigation
                 dataProcessing {
@@ -176,6 +177,10 @@ page {
 #########################
 #### INDEXED SEARCH  ####
 #########################
+config.index_enable = 1
+config.index_externals = 0
+config.index_metatags = 0
+
 plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang < config.sys_language_uid
 plugin.tx_indexedsearch {
     forwardSearchWordsInResultLink = 1
@@ -192,6 +197,7 @@ plugin.tx_indexedsearch {
         }
     }
     settings {
+        targetPid = 423
         breadcrumbWrap = /||/
         displayResultNumber = 1
         displayAdvancedSearchLink = 0
@@ -200,22 +206,15 @@ plugin.tx_indexedsearch {
             markupSW_summaryMax = 300
             markupSW_postPreLgd = 60
         }
-        targetPid = 423
     }
 }
 
-
-###################################
-#### SOLR-CONFIG MULTILANGUAGE ####
-###################################
 [globalVar = GP:L = 0]
-  plugin.tx_solr.solr.read.path = /solr/core_de/
-  plugin.tx_solr.solr.write.path = /solr/core_de/
+  plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang = 0
 [global]
 
 [globalVar = GP:L = 1]
-  plugin.tx_solr.solr.read.path = /solr/core_en/
-  plugin.tx_solr.solr.write.path = /solr/core_en/
+  plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang = 1
 [global]
 
 
