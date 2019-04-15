@@ -209,7 +209,7 @@ plugin.tx_indexedsearch {
         }
     }
     settings {
-        targetPid = 423
+        targetPid = 547
         breadcrumbWrap = /||/
         displayResultNumber = 1
         displayAdvancedSearchLink = 0

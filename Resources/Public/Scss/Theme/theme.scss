@@ -15,6 +15,8 @@
 //
 #page-header {
   width: 100%;
+  flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
   a {
     color: #fff !important;
   }
@@ -61,7 +63,7 @@
   background-color: #13306a !important;
 }
 
-.container-logo, .container-header-tools {
+.container-logo, .container-header-tools, .container-header-nav {
   display: flex !important;
 }
 
@@ -78,6 +80,15 @@
   width: 50% !important;
   margin: 0 !important;
   justify-content: flex-end !important;
+}
+
+.container-header-nav {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-start;
 }
 
 
@@ -118,7 +129,8 @@
     color: #6c757d;
   }
   .breadcrumb-section {
-    display: block;
+    display: flex;
+    justify-items: flex-start;
   }
   .breadcrumb-fixed {
     //position: fixed;
@@ -180,6 +192,25 @@
   @include media-breakpoint-up(lg) {
     display: none !important;
   }
+}
+.navbar-mainnavigation > .navbar-nav:first-child, .navbar-mainnavigation > .container > .navbar-collapse > .navbar-nav:first-child, .navbar-mainnavigation > .container-fluid > .navbar-collapse > .navbar-nav:first-child {
+  padding-top: 0.5rem;
+  padding-left: 0.8rem;
+  .child-lvl {
+    padding-left: 2.5rem;
+  }
+}
+.dropup, .dropright, .dropdown, .dropleft {
+  position: relative;
+  padding-left: 0.5rem;
+}
+.navbar-mainnavigation .dropdown-menu {
+  position: static;
+  margin-left: -20px;
+  margin-right: 0px !important;
+  border: none;
+  background: transparent;
+  border-left: 4px solid #0083c4;
 }
 
 
