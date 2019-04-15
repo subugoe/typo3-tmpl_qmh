@@ -362,11 +362,22 @@
 //
 // Previous / Next
 //
-.btn-prev {
-  float: left;
+@include media-breakpoint-down('xs') {
+  .btn-prev {
+    float: left;
+  }
+  .btn-next {
+    float: left;
+  }
 }
-.btn-next {
-  float: right;
+
+@include media-breakpoint-up('sm') {
+  .btn-prev {
+    float: left;
+  }
+  .btn-next {
+    float: right;
+  }
 }
 
 .btn-prev, .btn-next {
