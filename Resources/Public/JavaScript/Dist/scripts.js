@@ -11,6 +11,7 @@ $(function () {
     var heightHeader = $('#page-header').height();
     var heightBreadcrumbs = $('.breadcrumb-section').height();
     var heightPageContentInit = $('#page-content').height();
+    var heightSubnavWrapInit = $('.frame-type-subnavigation').outerHeight() + $('.subnavcont').outerHeight();
     var heightFooterOuter = $('#page-footer').outerHeight();
     var heightFooterHalf = Math.trunc($('#page-footer').height() * 0.2);
 
@@ -30,18 +31,22 @@ $(function () {
         var isSubnavWrap = ($('.subnav-wrap').css('display'));
 
         if ( isSubnavWrap !== 'none' ) {
-            var heightSubnavWrapOuter = $('.subnav-wrap').outerHeight();
-            if ( heightSubnavWrapOuter <= heightPageContentInit ) {
+
+            if ( heightSubnavWrapInit <= heightPageContentInit ) {
+
                 var headerScrolled = $(window).scrollTop();
-                if ( headerScrolled > 150 ) {
+
+                var maxPaddingTop2 = heightPageContentInit-heightSubnavWrapInit;
+
+                if ( (headerScrolled > 150) && (headerScrolled <= maxPaddingTop2) ) {
                     $('.subnav-wrap').css('padding-top', headerScrolled - heightHeader);
-                    if (headerScrolled > maxPaddingTop) {
-                        $('.subnav-wrap').css('padding-top', maxPaddingTop - heightHeader + 50);
-                    }
+                } else if ( (headerScrolled > 150) && (headerScrolled > maxPaddingTop2) ) {
+                    $('.subnav-wrap').css('padding-top', maxPaddingTop2);
                 } else {
                     $('.subnav-wrap').css('padding-top', headerScrolled);
                 }
             } else {
+
                 var headerScrolled = $(window).scrollTop();
                 if ( headerScrolled <= 50 ) {
                     $('.subnav-wrap').css('padding-top', '0');
@@ -49,6 +54,7 @@ $(function () {
                     $('.subnav-wrap').css('padding-top', headerScrolled - 50);
                 } else {
                 }
+
             }
         } else {
             $('.subnav-wrap').css('padding-top', '0');
