@@ -22,6 +22,14 @@
   }
 }
 
+.header-container {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  display: flex;
+  justify-items: flex-start;
+}
+
 .header-tool-spacer {
   margin-left: 1.5rem;
 }
@@ -41,6 +49,12 @@
   color: #fff;
   @include media-breakpoint-down(xs) {
     display: none !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-mainnavigation > .container, .navbar-mainnavigation > .container-fluid {
+    flex-wrap: wrap;
   }
 }
 
@@ -86,8 +100,6 @@
   clear: both;
   float: left;
   width: 100%;
-  margin: 0;
-  padding: 0;
   justify-content: flex-start;
 }
 
@@ -136,6 +148,7 @@
     //position: fixed;
     z-index: 1010;
     width: 100%;
+    padding-top: 30px;
   }
 }
 

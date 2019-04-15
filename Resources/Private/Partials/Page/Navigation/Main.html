@@ -2,70 +2,72 @@
 {namespace v=FluidTYPO3\Vhs\ViewHelpers}
 
 <header id="page-header" class="bp-page-header navbar navbar-mainnavigation navbar-{theme.navigation.style}{f:if(condition:settings.logo.file,then:' navbar-has-image')}{f:if(condition:theme.navigation.type, else:' navbar-top', then:' navbar-{theme.navigation.type} navbar-fixed-{theme.navigation.type}')}">
-    <div class="container container-logo">
-        <f:if condition="{settings.logo.file}">
-            <f:then>
-                <f:link.page pageUid="{rootPage}" class="navbar-brand navbar-brand-image" title="{settings.logo.linktitle}">
-                    <img class="navbar-brand-logo-normal" src="{f:uri.image(src: settings.logo.file)}" alt="{logoAlt}" height="{settings.logo.height}" width="{settings.logo.width}">
-                    <img class="navbar-brand-logo-inverted" src="{f:uri.image(src: settings.logo.fileInverted)}" alt="{logoAlt}" height="{settings.logo.height}" width="{settings.logo.width}">
-                </f:link.page>
-            </f:then>
-            <f:else>
-                <f:link.page pageUid="{rootPage}" class="navbar-brand navbar-brand-text" title="{settings.logo.linktitle}">{siteTitle}</f:link.page>
-            </f:else>
-        </f:if>
-<f:if condition="{mainnavigation}">
-</f:if>
-    </div>
-    <div class="container container-header-tools">
-        <div class="header-search-link header-tool-spacer">
-            <f:if condition="{0: data.sys_language_uid} == {0: '0'}">
+    <div class="container header-container">
+        <div class="container container-logo">
+            <f:if condition="{settings.logo.file}">
                 <f:then>
-                    <f:link.page pageUid="547">Suche</f:link.page>
+                    <f:link.page pageUid="{rootPage}" class="navbar-brand navbar-brand-image" title="{settings.logo.linktitle}">
+                        <img class="navbar-brand-logo-normal" src="{f:uri.image(src: settings.logo.file)}" alt="{logoAlt}" height="{settings.logo.height}" width="{settings.logo.width}">
+                        <img class="navbar-brand-logo-inverted" src="{f:uri.image(src: settings.logo.fileInverted)}" alt="{logoAlt}" height="{settings.logo.height}" width="{settings.logo.width}">
+                    </f:link.page>
                 </f:then>
+                <f:else>
+                    <f:link.page pageUid="{rootPage}" class="navbar-brand navbar-brand-text" title="{settings.logo.linktitle}">{siteTitle}</f:link.page>
+                </f:else>
             </f:if>
-            <f:if condition="{0: data.sys_language_uid} == {0: '1'}">
-                <f:then>
-                    <f:link.page pageUid="547">Search</f:link.page>
-                </f:then>
+    <f:if condition="{mainnavigation}">
+    </f:if>
+        </div>
+        <div class="container container-header-tools">
+            <div class="header-search-link header-tool-spacer">
+                <f:if condition="{0: data.sys_language_uid} == {0: '0'}">
+                    <f:then>
+                        <f:link.page pageUid="547">Suche</f:link.page>
+                    </f:then>
+                </f:if>
+                <f:if condition="{0: data.sys_language_uid} == {0: '1'}">
+                    <f:then>
+                        <f:link.page pageUid="547">Search</f:link.page>
+                    </f:then>
+                </f:if>
+            </div>
+
+
+    <f:comment>
+                    <f:form action="search" method="post" id="tx_indexedsearch" pageUid="547">
+                        <div class="tx-indexedsearch-hidden-fields">
+                            <f:form.hidden name="search[_sections]" value="0" />
+                            <f:form.hidden name="search[_freeIndexUid]" id="tx_indexedsearch_freeIndexUid" value="_" />
+                            <f:form.hidden name="search[pointer]" id="tx_indexedsearch_pointer" value="0" />
+                            <f:form.hidden name="search[ext]" value="{searchParams.ext}" />
+                            <f:form.hidden name="search[searchType]" value="{searchParams.searchType}" />
+                            <f:form.hidden name="search[defaultOperand]" value="{searchParams.defaultOperand}" />
+                            <f:form.hidden name="search[mediaType]" value="{searchParams.mediaType}" />
+                            <f:form.hidden name="search[sortOrder]" value="{searchParams.sortOrder}" />
+                            <f:form.hidden name="search[group]" value="{searchParams.group}" />
+                            <f:form.hidden name="search[languageUid]" value="{searchParams.languageUid}" />
+                            <f:form.hidden name="search[desc]" value="{searchParams.desc}" />
+                            <f:form.hidden name="search[numberOfResults]" value="{searchParams.numberOfResults}" />
+                            <f:form.hidden name="search[extendedSearch]" value="{searchParams.extendedSearch}" />
+                        </div>
+                        <fieldset>
+                            <div class="input-group tx-indexedsearch-searchbox-sword-input-group-header">
+                                <f:form.textfield name="search[sword]" value="{sword}" id="tx-indexedsearch-searchbox-sword" class="form-control" />
+                                <span class="input-group-btn">
+                                    <f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit')}" id="tx-indexedsearch-searchbox-button-submit" class="btn btn-primary" />
+                                </span>
+                            </div>
+                        </fieldset>
+                    </f:form>
+    </f:comment>
+
+
+            <f:if condition="{theme.language.enable}">
+                <div class="header-language header-tool-spacer">
+                    <f:render partial="Navigation/Language" arguments="{_all}" />
+                </div>
             </f:if>
         </div>
-
-
-<f:comment>
-                <f:form action="search" method="post" id="tx_indexedsearch" pageUid="547">
-                    <div class="tx-indexedsearch-hidden-fields">
-                        <f:form.hidden name="search[_sections]" value="0" />
-                        <f:form.hidden name="search[_freeIndexUid]" id="tx_indexedsearch_freeIndexUid" value="_" />
-                        <f:form.hidden name="search[pointer]" id="tx_indexedsearch_pointer" value="0" />
-                        <f:form.hidden name="search[ext]" value="{searchParams.ext}" />
-                        <f:form.hidden name="search[searchType]" value="{searchParams.searchType}" />
-                        <f:form.hidden name="search[defaultOperand]" value="{searchParams.defaultOperand}" />
-                        <f:form.hidden name="search[mediaType]" value="{searchParams.mediaType}" />
-                        <f:form.hidden name="search[sortOrder]" value="{searchParams.sortOrder}" />
-                        <f:form.hidden name="search[group]" value="{searchParams.group}" />
-                        <f:form.hidden name="search[languageUid]" value="{searchParams.languageUid}" />
-                        <f:form.hidden name="search[desc]" value="{searchParams.desc}" />
-                        <f:form.hidden name="search[numberOfResults]" value="{searchParams.numberOfResults}" />
-                        <f:form.hidden name="search[extendedSearch]" value="{searchParams.extendedSearch}" />
-                    </div>
-                    <fieldset>
-                        <div class="input-group tx-indexedsearch-searchbox-sword-input-group-header">
-                            <f:form.textfield name="search[sword]" value="{sword}" id="tx-indexedsearch-searchbox-sword" class="form-control" />
-                            <span class="input-group-btn">
-                                <f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit')}" id="tx-indexedsearch-searchbox-button-submit" class="btn btn-primary" />
-                            </span>
-                        </div>
-                    </fieldset>
-                </f:form>
-</f:comment>
-
-
-        <f:if condition="{theme.language.enable}">
-            <div class="header-language header-tool-spacer">
-                <f:render partial="Navigation/Language" arguments="{_all}" />
-            </div>
-        </f:if>
     </div>
     <div class="container container-header-nav">
         <button class="navbar-toggler collapsed header-tool-spacer" type="button" data-toggle="collapse" data-target="#mainnavigation" aria-expanded="false" aria-label="Toggle navigation">
