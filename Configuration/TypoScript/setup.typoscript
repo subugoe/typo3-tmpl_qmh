@@ -4,6 +4,18 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/setup.typoscript">
 
 
+#####################
+#### GLOBAL VARS ####
+#####################
+[globalVar = GP:L = 0]
+  plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang = 0
+[global]
+
+[globalVar = GP:L = 1]
+  plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang = 1
+[global]
+
+
 ##############
 #### PAGE ####
 ##############
@@ -209,14 +221,6 @@ plugin.tx_indexedsearch {
     }
 }
 
-[globalVar = GP:L = 0]
-  plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang = 0
-[global]
-
-[globalVar = GP:L = 1]
-  plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang = 1
-[global]
-
 
 ##############################
 #### PREV/NEXT NAVIGATION ####
@@ -338,4 +342,15 @@ lib.PREV_NEXT {
             }
         }
     }
+}
+
+
+###########################
+#### PAGE LAST UPDATED ####
+###########################
+lib.lastUpdated = TEXT
+lib.lastUpdated {
+    data. = page:SYS_LASTCHANGED
+    strftime = %d.%m.%Y %H:%M
+    wrap = |
 }

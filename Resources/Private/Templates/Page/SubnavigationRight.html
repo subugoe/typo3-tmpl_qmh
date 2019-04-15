@@ -24,6 +24,16 @@
                     <!--TYPO3SEARCH_begin-->
                         <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{pageUid: '{data.uid}', colPos: '0', slide: '{theme.pagelayout.{pagelayout}.colPos.0.slide}'}" />
                     <!--TYPO3SEARCH_end-->
+                    <span class="last-updated">
+                        <f:if condition="{0: data.sys_language_uid} == {0: '0'}">
+                            <f:then>
+                                zuletzt geändert: <f:cObject typoscriptObjectPath="lib.lastUpdated" />
+                            </f:then>
+                            <f:else>
+                                last updated: <f:cObject typoscriptObjectPath="lib.lastUpdated" />
+                            </f:else>
+                        </f:if>
+                    </span>
                     <div class="complementary subnavcont-main" role="complementary">
                         <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{pageUid: '{data.uid}', colPos: '2', slide: '{theme.pagelayout.{pagelayout}.colPos.2.slide}'}" />
                     </div>
