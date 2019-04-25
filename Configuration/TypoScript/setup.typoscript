@@ -366,7 +366,7 @@ lib.PREV_NEXT {
 ###########################
 lib.lastUpdated = TEXT
 lib.lastUpdated {
-    data. = page:SYS_LASTCHANGED
+    data. = page:tstamp
     strftime = %d.%m.%Y %H:%M
     wrap = |
 }
