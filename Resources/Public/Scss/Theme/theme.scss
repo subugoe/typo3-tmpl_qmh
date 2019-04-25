@@ -163,21 +163,96 @@
   .breadcrumb-item.active {
     color: #6c757d;
   }
+
   .breadcrumb-section {
     display: flex;
     justify-items: flex-start;
   }
+
   .breadcrumb-fixed {
     //position: fixed;
     z-index: 1010;
     width: 100%;
-    padding-top: 30px;
+    padding-top: 35px;
+    padding-left: 15px;
   }
 }
 
 @include media-breakpoint-up('lg') {
   .breadcrumb-section {
     display: none !important;
+  }
+}
+
+@include media-breakpoint-down('md') {
+  .breadcrumb {
+    .bc-home {
+      @font-face {
+        font-family: "Glyphicons Halflings";
+        src: url("../../fonts/glyphicons-halflings-regular.eot");
+        src: url("../../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/glyphicons-halflings-regular.woff2") format("woff2"), url("../../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
+      }
+      .glyphicon {
+        position: relative;
+        top: 1px;
+        display: inline-block;
+        font-family: "Glyphicons Halflings";
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .glyphicon-home::before {
+        content: "\e021";
+      }
+      .breadcrumb-text {
+        display: none;
+      }
+    }
+    .bc-hidden-parents {
+      display: none;
+    }
+    .bc-current-parent::before {
+      display: inline-block;
+      padding-right: 0.5rem;
+      color: #6c757d;
+      content: "/ ... /";
+    }
+  }
+}
+
+@include media-breakpoint-up('md') {
+  .breadcrumb {
+    .bc-home {
+      .glyphicon {
+        display: none;
+      }
+      .breadcrumb-text {
+        display: list-item;
+      }
+    }
+    .bc-hidden-parents {
+      display: list-item;
+    }
+    .bc-current-parent::before {
+      display: inline-block;
+      padding-right: 0.5rem;
+      color: #6c757d;
+      content: "/";
+    }
+  }
+}
+
+@include media-breakpoint-down('sm') {
+  .breadcrumb-fixed {
+    padding-left: 8px;
+  }
+}
+
+@include media-breakpoint-up('sm') {
+  .breadcrumb-fixed {
+    padding-left: 15px;
   }
 }
 
