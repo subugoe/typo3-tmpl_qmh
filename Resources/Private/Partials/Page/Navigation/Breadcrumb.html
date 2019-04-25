@@ -6,7 +6,7 @@
                 <p class="sr-only" id="breadcrumb">{f:translate(key: 'breadcrumb', extensionName: 'bootstrap_package')}</p>
                 <ol class="breadcrumb">
                     <f:for each="{breadcrumb}" as="item">
-                        <li class="breadcrumb-item{f:if(condition: item.current, then: ' active')}{f:if(condition: '{item.data.uid} == 119', then:' bc-home')}{f:if(condition: '{item.data.uid} == {data.pid}', then:' bc-current-parent')}{f:if(condition: '{item.data.uid} != {data.pid} && {item.data.uid} != 119 && {item.current} != 1', then:' bc-hidden-parents')}"{f:if(condition: item.current, then: ' aria-current="page"')}>
+                        <li class="breadcrumb-item{f:if(condition: item.current, then: ' active')}{f:if(condition: '{item.data.uid} == 119', then:' bc-home')}{f:if(condition: '{item.data.uid} == {data.pid} && {data.pid} == 119', then:' bc-current-parentIsHome')}{f:if(condition: '{item.data.uid} == {data.pid} && {data.pid} == 235', then:' bc-current-parentIsQM')}{f:if(condition: '{item.data.uid} == {data.pid} && {data.pid} != 119 && {data.pid} != 235', then:' bc-current-parent')}{f:if(condition: '{item.data.uid} != {data.pid} && {item.data.uid} != 119 && {item.current} != 1', then:' bc-hidden-parents')}"{f:if(condition: item.current, then: ' aria-current="page"')}>
                             <f:if condition="{item.current} && {breadcrumbExtendedValue} == ''">
                                 <f:then>
                                     <f:render section="BreadcrumbTitle" arguments="{item: item, theme: theme}" />
