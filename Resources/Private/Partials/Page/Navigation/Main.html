@@ -2,7 +2,7 @@
 {namespace v=FluidTYPO3\Vhs\ViewHelpers}
 
 <header id="page-header" class="bp-page-header navbar navbar-mainnavigation navbar-{theme.navigation.style}{f:if(condition:settings.logo.file,then:' navbar-has-image')}{f:if(condition:theme.navigation.type, else:' navbar-top', then:' navbar-{theme.navigation.type} navbar-fixed-{theme.navigation.type}')}">
-    <div class="container header-container">
+    <div class="container header-container container-seal">
         <div class="container container-logo">
             <f:if condition="{settings.logo.file}">
                 <f:then>

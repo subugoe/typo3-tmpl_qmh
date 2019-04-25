@@ -98,7 +98,7 @@
   white-space: normal;
 }
 
-.container-logo, .container-header-tools, .container-header-nav {
+.container-logo, .container-seal, .container-header-tools, .container-header-nav {
   display: flex !important;
 }
 
@@ -109,21 +109,48 @@
   margin: 0 !important;
 }
 
+@include media-breakpoint-down('lg') {
+  .container-seal {
+    background: url("../../Images/uni_siegel.svg") no-repeat 85% 10px;
+    background-size: 180px 180px;
+    padding-bottom: 35px;
+  }
+
+  .container-header-nav {
+    clear: both;
+    float: left;
+    width: 100%;
+    padding-left: 28px;
+    padding-bottom: 12px;
+    margin-top: -45px;
+    justify-content: flex-start;
+  }
+}
+
+@include media-breakpoint-up('lg') {
+  .container-seal {
+    background: url("../../Images/uni_siegel.svg") no-repeat 85% 15px;
+    background-size: 250px 250px;
+    padding-bottom: 0px;
+  }
+
+  .container-header-nav {
+    clear: both;
+    float: left;
+    width: 100%;
+    padding-left: 28px;
+    padding-bottom: 12px;
+    margin-top: -12px;
+    justify-content: flex-start;
+  }
+}
+
 .container-header-tools {
   clear: both !important;
   float: right !important;
   width: 50% !important;
   margin: 0 !important;
   justify-content: flex-end !important;
-}
-
-.container-header-nav {
-  clear: both;
-  float: left;
-  width: 100%;
-  padding-left: 28px;
-  padding-bottom: 5px;
-  justify-content: flex-start;
 }
 
 
