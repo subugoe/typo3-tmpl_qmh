@@ -7,13 +7,19 @@
 #####################
 #### GLOBAL VARS ####
 #####################
+temp.language = TEXT
+
 [globalVar = GP:L = 0]
-  plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang = 0
+    temp.language.value = de
+    plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang = 0
 [global]
 
 [globalVar = GP:L = 1]
-  plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang = 1
+    temp.language.value = en
+    plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang = 1
 [global]
+
+lib.language < temp.language
 
 
 ##############

@@ -83,7 +83,7 @@
 
 <f:section name="MainNavigation">
     <f:if condition="{menu}">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" lang="{f:if(condition: '{f:cObject(typoscriptObjectPath: \'lib.language\')} == 0', then:'de', else:'en')}">
             <f:for each="{menu}" as="item">
                 <f:if condition="{item.spacer}">
                     <f:then>
@@ -105,7 +105,7 @@
                                         </f:if>
                                     </span>
                                 </f:if>
-                                <span class="nav-link-text">{item.title}<f:if condition="{item.current}"> <span class="sr-only">(current)</span></f:if></span>
+                                <span class="nav-link-text" lang="{f:if(condition: '{f:cObject(typoscriptObjectPath: \'lib.language\')} == 0', then:'de', else:'en')}">{item.title}<f:if condition="{item.current}"> <span class="sr-only">(current)</span></f:if></span>
                             </a>
                             <f:if condition="{item.children}">
                                 <ul class="dropdown-menu" aria-labelledby="nav-item-{item.data.uid}">
@@ -129,7 +129,7 @@
                                                                 </f:if>
                                                             </span>
                                                         </f:if>
-                                                        <span class="dropdown-text">{child.title}<f:if condition="{child.current}"> <span class="sr-only">(current)</span></f:if></span>
+                                                        <span class="dropdown-text" lang="{f:if(condition: '{f:cObject(typoscriptObjectPath: \'lib.language\')} == 0', then:'de', else:'en')}">{child.title}<f:if condition="{child.current}"> <span class="sr-only">(current)</span></f:if></span>
                                                     </a>
                                                     <f:if condition="{child.children}">
                                                         <ul class="dropdown-menu" aria-labelledby="nav-item-{child.data.uid}">
@@ -153,7 +153,7 @@
                                                                                     </f:if>
                                                                                 </span>
                                                                             </f:if>
-                                                                            <span class="dropdown-text">{child_lvl2.title}<f:if condition="{child_lvl2.current}"> <span class="sr-only">(current)</span></f:if></span>
+                                                                            <span class="dropdown-text" lang="{f:if(condition: '{f:cObject(typoscriptObjectPath: \'lib.language\')} == 0', then:'de', else:'en')}">{child_lvl2.title}<f:if condition="{child_lvl2.current}"> <span class="sr-only">(current)</span></f:if></span>
                                                                             </a>
                                                                             <f:if condition="{child_lvl2.children}">
                                                                             <ul class="dropdown-menu" aria-labelledby="nav-item-{child_lvl2.data.uid}">
@@ -177,7 +177,7 @@
                                                                                                         </f:if>
                                                                                                     </span>
                                                                                                 </f:if>
-                                                                                                <span class="dropdown-text">{child_lvl3.title}<f:if condition="{child_lvl3.current}"> <span class="sr-only">(current)</span></f:if></span>
+                                                                                                <span class="dropdown-text" lang="{f:if(condition: '{f:cObject(typoscriptObjectPath: \'lib.language\')} == 0', then:'de', else:'en')}">{child_lvl3.title}<f:if condition="{child_lvl3.current}"> <span class="sr-only">(current)</span></f:if></span>
                                                                                                 </a>
                                                                                                 <f:if condition="{child_lvl3.children}">
                                                                                                     <ul class="dropdown-menu" aria-labelledby="nav-item-{child_lvl3.data.uid}">
@@ -201,7 +201,7 @@
                                                                                                                                 </f:if>
                                                                                                                             </span>
                                                                                                                         </f:if>
-                                                                                                                        <span class="dropdown-text">{child_lvl4.title}<f:if condition="{child_lvl4.current}"> <span class="sr-only">(current)</span></f:if></span>
+                                                                                                                        <span class="dropdown-text" lang="{f:if(condition: '{f:cObject(typoscriptObjectPath: \'lib.language\')} == 0', then:'de', else:'en')}">{child_lvl4.title}<f:if condition="{child_lvl4.current}"> <span class="sr-only">(current)</span></f:if></span>
                                                                                                                         </a>
                                                                                                                         <f:if condition="{child_lvl4.children}">
                                                                                                                             <ul class="dropdown-menu" aria-labelledby="nav-item-{child_lvl4.data.uid}">
@@ -225,7 +225,7 @@
                                                                                                                                                         </f:if>
                                                                                                                                                     </span>
                                                                                                                                                 </f:if>
-                                                                                                                                                <span class="dropdown-text">{child_lvl5.title}<f:if condition="{child_lvl5.current}"> <span class="sr-only">(current)</span></f:if></span>
+                                                                                                                                                <span class="dropdown-text" lang="{f:if(condition: '{f:cObject(typoscriptObjectPath: \'lib.language\')} == 0', then:'de', else:'en')}">{child_lvl5.title}<f:if condition="{child_lvl5.current}"> <span class="sr-only">(current)</span></f:if></span>
                                                                                                                                                 </a>
                                                                                                                                                 <f:if condition="{child_lvl5.children}">
                                                                                                                                                     <ul class="dropdown-menu" aria-labelledby="nav-item-{child_lvl5.data.uid}">
@@ -249,7 +249,7 @@
                                                                                                                                                                                 </f:if>
                                                                                                                                                                             </span>
                                                                                                                                                                         </f:if>
-                                                                                                                                                                        <span class="dropdown-text">{child_lvl6.title}<f:if condition="{child_lvl6.current}"> <span class="sr-only">(current)</span></f:if></span>
+                                                                                                                                                                        <span class="dropdown-text" lang="{f:if(condition: '{f:cObject(typoscriptObjectPath: \'lib.language\')} == 0', then:'de', else:'en')}">{child_lvl6.title}<f:if condition="{child_lvl6.current}"> <span class="sr-only">(current)</span></f:if></span>
                                                                                                                                                                         </a>
                                                                                                                                                                         <f:if condition="{child_lvl6.children}">
                                                                                                                                                                             <ul class="dropdown-menu" aria-labelledby="nav-item-{child_lvl6.data.uid}">
@@ -273,7 +273,7 @@
                                                                                                                                                                                                         </f:if>
                                                                                                                                                                                                     </span>
                                                                                                                                                                                                 </f:if>
-                                                                                                                                                                                                <span class="dropdown-text">{child_lvl7.title}<f:if condition="{child_lvl7.current}"> <span class="sr-only">(current)</span></f:if></span>
+                                                                                                                                                                                                <span class="dropdown-text" lang="{f:if(condition: '{f:cObject(typoscriptObjectPath: \'lib.language\')} == 0', then:'de', else:'en')}">{child_lvl7.title}<f:if condition="{child_lvl7.current}"> <span class="sr-only">(current)</span></f:if></span>
                                                                                                                                                                                                 </a>
                                                                                                                                                                                             </li>
                                                                                                                                                                                         </f:else>

@@ -73,8 +73,29 @@
 .header-language .language-menu .active a {
   font-weight: bold;
 }
+
 .navbar-mainnavigation {
   background-color: #13306a !important;
+  .navbar-toggler {
+    width: 22px;
+    margin-right: 1.5rem;
+    margin-left: 0px;
+  }
+}
+
+.navbar-mainnavigation > .container > .navbar-collapse {
+  margin-left: -12px;
+}
+
+.dropdown-text {
+  hyphenate-character: "\2112";
+  -webkit-hyphenate-character: "\2112";
+  -moz-hyphens: auto;
+  -o-hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  white-space: normal;
 }
 
 .container-logo, .container-header-tools, .container-header-nav {
@@ -100,6 +121,8 @@
   clear: both;
   float: left;
   width: 100%;
+  padding-left: 28px;
+  padding-bottom: 5px;
   justify-content: flex-start;
 }
 
