@@ -354,7 +354,7 @@
 
 
 //
-// Subnavigation
+// Homepage Card Navigation
 //
 .card-body {
   flex: 1 1 auto;
@@ -414,6 +414,11 @@
   background-color: rgb(129, 170, 9);
 }
 
+
+
+//
+// Subnavigation
+//
 @include media-breakpoint-down('lg') {
   .backendlayout-subnavigation_right,
   .backendlayout-subnavigation_left {
@@ -518,17 +523,61 @@
   font-weight: bold;
 }
 
-.subnav-item {
+.subnav-link {
   position: relative;
   margin: 0.4rem 0rem;
-}
-
-.subnav-link {
   padding: 0.25rem 0.5rem;
   border-top: none;
   border-right: none;
   border-bottom: 1px solid #e6e6e6;
   border-left: none;
+}
+
+.subnav-item.menuitem-is-active {
+  .menuitem-has-children {
+    padding-left: 0.3rem;
+  }
+  .menuitem-has-children::before {
+    @font-face {
+      font-family: "Glyphicons Halflings";
+      src: url("../../fonts/glyphicons-halflings-regular.eot");
+      src: url("../../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/glyphicons-halflings-regular.woff2") format("woff2"), url("../../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
+    }
+    content: "\e252";
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    font-style: normal;
+    font-size: 0.6rem;
+    font-weight: 400;
+    margin-right: 0.2rem;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.subnav-item.menuitem-is-inactive {
+  .menuitem-has-children::before {
+    @font-face {
+      font-family: "Glyphicons Halflings";
+      src: url("../../fonts/glyphicons-halflings-regular.eot");
+      src: url("../../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/glyphicons-halflings-regular.woff2") format("woff2"), url("../../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
+    }
+    content: "\e250";
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    font-style: normal;
+    font-size: 0.6rem;
+    font-weight: 400;
+    margin-right: 0.2rem;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.menuitem-has-nochildren {
+  padding-left: 1.1rem;
 }
 
 .subnav-wrap {

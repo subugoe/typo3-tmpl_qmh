@@ -133,7 +133,7 @@ page {
             20 {
                 entryLevel = 1
                 levels = 80
-                expandAll = 0
+                expandAll = 1
                 includeSpacer = 1
                 as = subnavigation
                 dataProcessing {

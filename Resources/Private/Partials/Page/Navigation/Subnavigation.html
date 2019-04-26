@@ -17,8 +17,8 @@
                         <li class="subnav-divider"></li>
                     </f:then>
                     <f:else>
-                        <li class="subnav-item subnav-colorNav-{item.data.uid}{f:if(condition: item.active, then:' active')}">
-                            <a href="{item.link}" id="subnav-item-{item.data.uid}" class="subnav-link{f:if(condition: item.current, then:' current')}"{f:if(condition: item.target, then: ' target="{item.target}"')} title="{item.title}">
+                        <li class="subnav-item subnav-colorNav-{item.data.uid}{f:if(condition: item.active, then:' active')}{f:if(condition: item.active, then:' menuitem-is-active', else:' menuitem-is-inactive')}">
+                            <a href="{item.link}" id="subnav-item-{item.data.uid}" class="subnav-link{f:if(condition: item.current, then:' current')}{f:if(condition: item.children, then:' menuitem-has-children', else:' menuitem-has-nochildren')}"{f:if(condition: item.target, then: ' target="{item.target}"')} title="{item.title}">
                                 <f:if condition="{item.icon}">
                                     <span class="subnav-link-icon">
                                         <f:if condition="{item.icon.0.extension} === svg">
@@ -33,7 +33,7 @@
                                 </f:if>
                                 <span class="subnav-link-text">{item.title}<f:if condition="{item.current}"> <span class="sr-only">(current)</span></f:if></span>
                             </a>
-                            <f:if condition="{item.children}">
+                            <f:if condition="{item.children} && {item.active}">
                                 <f:render section="SubnavigationItem" arguments="{menu: item.children, theme: theme}" />
                             </f:if>
                         </li>
