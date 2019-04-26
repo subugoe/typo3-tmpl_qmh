@@ -31,7 +31,7 @@
                                         </f:if>
                                     </span>
                                 </f:if>
-                                <span class="subnav-link-text">{item.title}<f:if condition="{item.current}"> <span class="sr-only">(current)</span></f:if></span>
+                                <span class="subnav-link-text" lang="{f:if(condition: '{f:cObject(typoscriptObjectPath: \'lib.language\')} == 0', then:'de', else:'en')}">{item.title}<f:if condition="{item.current}"> <span class="sr-only">(current)</span></f:if></span>
                             </a>
                             <f:if condition="{item.children} && {item.active}">
                                 <f:render section="SubnavigationItem" arguments="{menu: item.children, theme: theme}" />

@@ -588,6 +588,17 @@
   transition: padding 0.6s;
 }
 
+.subnav-link-text {
+  /*hyphenate-character: "\2010";
+  -webkit-hyphenate-character: "\2010";
+  -moz-hyphens: auto;
+  -o-hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;*/
+  white-space: normal;
+}
+
 
 
 //
