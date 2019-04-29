@@ -193,8 +193,15 @@ page {
 
 
 #########################
-#### INDEXED SEARCH  ####
+#### SPAM PROTECTION ####
 #########################
+config.spamProtectEmailAddresses = 1
+config.spamProtectEmailAddresses_atSubst = (at)
+
+
+########################
+#### INDEXED SEARCH ####
+########################
 config.index_enable = 1
 config.index_externals = 0
 config.index_metatags = 0
