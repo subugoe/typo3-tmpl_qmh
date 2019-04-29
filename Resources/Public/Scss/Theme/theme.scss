@@ -355,6 +355,9 @@
   background: transparent;
   border-left: 4px solid #0083c4;
 }
+.navbar-mainnavigation .navbar-brand-image img {
+  height: auto !important;
+}
 .nav-link {
   color: rgba(0, 0, 0, 0.85) !important;
 }
