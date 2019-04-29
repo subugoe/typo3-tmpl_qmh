@@ -111,7 +111,7 @@
 
 @include media-breakpoint-down('lg') {
   .container-seal {
-    background: url("../../Images/uni_siegel.svg") no-repeat 85% 10px;
+    /* background: url("../../Images/uni_siegel.svg") no-repeat 85% 10px; */
     background-size: 180px 180px;
     padding-bottom: 35px;
   }
