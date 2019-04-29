@@ -8,11 +8,33 @@
 ### CONFIG ###
 ##############
 config {
-    baseURL = http://localhost:8009/
-##  baseURL = https://qmh.sub.uni-goettingen.de/
-    absRefPrefix = http://localhost:8009
-##  absRefPrefix = https://qmh.sub.uni-goettingen.de/
+#   baseURL = http://localhost:8009/
+##  baseURL = https://live.qmh.sub.uni-goettingen.de/
+    absRefPrefix = /
+##  absRefPrefix = https://live.qmh.sub.uni-goettingen.de/
+
+    linkVars = L
+    sys_language_uid = 0
+    #language = DE-DE
+    language = de
+    #flag = dede
+    flag = de
+    locale_all = de_DE.UTF-8
+    # don't move head javascript into external file
+    removeDefaultJS = 0
 }
+
+[siteLanguage('title') == 'English']
+    config {
+        language = en
+        flag = gb
+        sys_language_uid = 1
+        sys_language_mode = content_fallback
+        sys_language_overlay = 1
+        # change setting in html-tag
+        htmlTag_setParams = lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml"
+    }
+[global]
 
 
 ############
