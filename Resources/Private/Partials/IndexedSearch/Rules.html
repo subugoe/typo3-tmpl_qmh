@@ -2,8 +2,8 @@
 <f:if condition="{settings.displayRules}">
 
     <div class="form-group">
-        <a href="#" data-toggle="popover" data-trigger="focus" title="{f:translate(key:'rules.headline')}" data-html="true" data-content="{f:translate(key:'rules.text') -> f:format.htmlentities()}">
-            <f:translate key="rules.headline" />
+        <a href="#" data-toggle="popover" data-trigger="focus" title="{f:translate(key:'rules.headline', extensionName:'tmpl_qmh')}" data-html="true" data-content="{f:translate(key:'rules.text', extensionName:'tmpl_qmh') -> f:format.htmlentities()}">
+            <f:translate key="rules.headline" extensionName="tmpl_qmh" />
         </a>
     </div>
 

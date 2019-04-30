@@ -17,16 +17,16 @@
     </div>
     <fieldset>
         <legend class="sr-only">
-            <f:translate key="form.legend" />
+            <f:translate key="form.legend" extensionName="tmpl_qmh" />
         </legend>
         <div class="form-group">
             <label for="tx-indexedsearch-searchbox-sword" class="control-label">
-                <f:translate key="form.searchFor" />
+                <f:translate key="form.searchFor" extensionName="tmpl_qmh" />
             </label>
             <div class="input-group">
                 <f:form.textfield name="search[sword]" value="{sword}" id="tx-indexedsearch-searchbox-sword" class="form-control" />
                 <span class="input-group-btn">
-                    <f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit')}" id="tx-indexedsearch-searchbox-button-submit" class="btn btn-primary" />
+                    <f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit', extensionName: 'tmpl_qmh')}" id="tx-indexedsearch-searchbox-button-submit" class="btn btn-primary" />
                 </span>
             </div>
         </div>
@@ -35,12 +35,12 @@
                 <f:if condition="{searchParams.extendedSearch}">
                     <f:then>
                         <f:link.action action="form" arguments="{search: {extendedSearch: 0}}">
-                            <f:translate key="form.linkToRegularSearch" />
+                            <f:translate key="form.linkToRegularSearch" extensionName="tmpl_qmh" />
                         </f:link.action>
                     </f:then>
                     <f:else>
                         <f:link.action action="form" arguments="{search: {extendedSearch: 1}}">
-                            <f:translate key="form.linkToAdvancedSearch" />
+                            <f:translate key="form.linkToAdvancedSearch" extensionName="tmpl_qmh" />
                         </f:link.action>
                     </f:else>
                 </f:if>
@@ -51,7 +51,7 @@
             <f:if condition="{showTypeSearch}">
                 <div class="form-group">
                     <label for="tx-indexedsearch-selectbox-searchtype" class="control-label">
-                        <f:translate key="form.match" />
+                        <f:translate key="form.match" extensionName="tmpl_qmh" />
                     </label>
                     <div class="row">
                         <f:if condition="{allSearchTypes}">
@@ -70,7 +70,7 @@
             <f:if condition="{showMediaAndLanguageSearch}">
                 <div class="form-group">
                     <label for="tx-indexedsearch-selectbox-media" class="control-label">
-                        <f:translate key="form.searchIn" />
+                        <f:translate key="form.searchIn" extensionName="tmpl_qmh" />
                     </label>
                     <div class="row">
                         <f:if condition="{allMediaTypes}">
@@ -89,7 +89,7 @@
             <f:if condition="{allSections}">
                 <div class="form-group">
                     <label for="tx-indexedsearch-selectbox-sections" class="control-label">
-                        <f:translate key="form.fromSection" />
+                        <f:translate key="form.fromSection" extensionName="tmpl_qmh" />
                     </label>
                     <f:form.select name="search[sections]" options="{allSections}" value="{searchParams.sections}" id="tx-indexedsearch-selectbox-sections" class="form-control" />
                 </div>
@@ -105,7 +105,7 @@
             <f:if condition="{showSortOrders}">
                 <div class="form-group">
                     <label for="tx-indexedsearch-selectbox-order" class="control-label">
-                        <f:translate key="form.orderBy" />
+                        <f:translate key="form.orderBy" extensionName="tmpl_qmh" />
                     </label>
                     <div class="row">
                         <div class="col-sm-6 col-xs-12">
@@ -120,7 +120,7 @@
             <f:if condition="{allNumberOfResults}">
                 <div class="form-group">
                     <label for="tx-indexedsearch-selectbox-results" class="control-label">
-                        <f:translate key="form.atATime" />
+                        <f:translate key="form.atATime" extensionName="tmpl_qmh" />
                     </label>
                     <f:form.select name="search[numberOfResults]" options="{allNumberOfResults}" value="{searchParams.numberOfResults}" id="tx-indexedsearch-selectbox-results" class="form-control" />
                 </div>
@@ -128,7 +128,7 @@
             <f:if condition="{allGroups}">
                 <div class="form-group">
                     <label for="tx-indexedsearch-selectbox-group" class="control-label">
-                        <f:translate key="form.style" />
+                        <f:translate key="form.style" extensionName="tmpl_qmh" />
                     </label>
                     <div class="input-group">
                         <f:form.select name="search[group]" options="{allGroups}" value="{searchParams.group}" id="tx-indexedsearch-selectbox-group" class="form-control" />
