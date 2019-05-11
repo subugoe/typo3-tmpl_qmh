@@ -4,6 +4,24 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/setup.typoscript">
 
 
+#####################
+#### GLOBAL VARS ####
+#####################
+temp.language = TEXT
+
+[globalVar = GP:L = 0]
+    temp.language.value = de
+    plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang = 0
+[global]
+
+[globalVar = GP:L = 1]
+    temp.language.value = en
+    plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang = 1
+[global]
+
+lib.language < temp.language
+
+
 ##############
 #### PAGE ####
 ##############
@@ -13,6 +31,14 @@ page {
     }
 
     includeJSLibs {
+        // jQuery api wird für die Bootstrap jQuery Funktionen gebraucht
+        file_01 = https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
+        file_01 {
+            external = 1
+            disableCompression = 1
+            excludeFromConcatenation = 1
+            forceontop = 1
+        }
 
     }
 
@@ -21,10 +47,333 @@ page {
     }
 
     includeJSFooterlibs {
-
     }
 
     includeJSFooter {
         tmpl_qmh_scripts = EXT:tmpl_qmh/Resources/Public/JavaScript/Dist/scripts.js
     }
+
+
+
+    10 = FLUIDTEMPLATE
+    10 {
+        # Template names will be generated automatically by converting the applied
+        # backend_layout, there is no explicit mapping necessary anymore.
+        #
+        # BackendLayout Key
+        # subnavigation_right_2_columns -> SubnavigationRight2Columns.html
+        #
+        # Backend Record
+        # uid: 1 -> 1.html
+        #
+        # Database Entry
+        # value: -1 -> None.html
+        # value: pagets__subnavigation_right_2_columns -> SubnavigationRight2Columns.html
+        templateName = TEXT
+        templateName {
+            cObject = TEXT
+            cObject {
+                data = pagelayout
+                required = 1
+                case = uppercamelcase
+                split {
+                    token = pagets__
+                    cObjNum = 1
+                    1.current = 1
+                }
+            }
+            ifEmpty = Default
+        }
+
+        templateRootPaths {
+            0 = EXT:bootstrap_package/Resources/Private/Templates/Page/
+            1 = {$page.fluidtemplate.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:bootstrap_package/Resources/Private/Partials/Page/
+            1 = {$page.fluidtemplate.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:bootstrap_package/Resources/Private/Layouts/Page/
+            1 = {$page.fluidtemplate.layoutRootPath}
+        }
+        languageRootPath = EXT:tmpl_qmh/Resources/Private/Language/
+        dataProcessing {
+            1 = BK2K\BootstrapPackage\DataProcessing\ConstantsProcessor
+            1 {
+                as = theme
+                key = page.theme
+            }
+            10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            10 {
+                levels = 80
+                expandAll = 1
+                includeSpacer = 1
+                as = mainnavigation
+                dataProcessing {
+                    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                    10 {
+                        references.fieldName = nav_icon
+                        as = icon
+                        if {
+                            isTrue.stdWrap.cObject = COA
+                            isTrue.stdWrap.cObject {
+                                10 = TEXT
+                                10.value = 1
+                                10.if.isTrue = {$page.theme.navigation.icon.enable}
+                                20 = TEXT
+                                20.value = 1
+                                20.if.isTrue = {$page.theme.navigation.dropdown.icon.enable}
+                            }
+                        }
+                    }
+                }
+            }
+            20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            20 {
+                entryLevel = 1
+                levels = 80
+                expandAll = 1
+                includeSpacer = 1
+                as = subnavigation
+                dataProcessing {
+                    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                    10 {
+                        references.fieldName = nav_icon
+                        as = icon
+                        if {
+                            isTrue = {$page.theme.subnavigation.icon.enable}
+                        }
+                    }
+                }
+            }
+            30 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            30 {
+                special = rootline
+                special.range = 0|-1
+                includeNotInMenu = 1
+                as = breadcrumb
+                if {
+                    value = {$page.theme.breadcrumb.enableLevel}
+                    value {
+                        insertData = 1
+                        prioriCalc = 1
+                        stdWrap.wrap = |-1
+                    }
+                    isGreaterThan {
+                        data = level
+                    }
+                }
+                dataProcessing {
+                    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                    10 {
+                        references.fieldName = nav_icon
+                        as = icon
+                    }
+                }
+            }
+            40 = TYPO3\CMS\Frontend\DataProcessing\LanguageMenuProcessor
+            40 {
+                languages = {$page.theme.language.languageValue}
+                as = languagenavigation
+            }
+            50 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            50 {
+                special = {$page.theme.meta.navigationType}
+                special.value = {$page.theme.meta.navigationValue}
+                includeNotInMenu = {$page.theme.meta.includeNotInMenu}
+                as = metanavigation
+                if {
+                    isTrue = {$page.theme.meta.navigationValue}
+                }
+            }
+        }
+    }
+}
+
+
+#########################
+#### SPAM PROTECTION ####
+#########################
+config.spamProtectEmailAddresses = 1
+config.spamProtectEmailAddresses_atSubst = (at)
+
+
+########################
+#### INDEXED SEARCH ####
+########################
+config.index_enable = 1
+config.index_externals = 0
+config.index_metatags = 0
+
+plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang < config.sys_language_uid
+plugin.tx_indexedsearch {
+    forwardSearchWordsInResultLink = 1
+    view {
+        templateRootPaths {
+            0 = EXT:indexed_search/Resources/Private/Templates/
+            10 = {$plugin.tx_indexedsearch.view.templateRootPath}
+            20 = EXT:tmpl_qmh/Resources/Private/Templates/IndexedSearch/
+        }
+        partialRootPaths {
+            0 = EXT:indexed_search/Resources/Private/Partials/
+            10 = {$plugin.tx_indexedsearch.view.partialRootPath}
+            20 = EXT:tmpl_qmh/Resources/Private/Partials/IndexedSearch/
+        }
+    }
+    settings {
+        targetPid = 547
+        breadcrumbWrap = /||/
+        displayResultNumber = 1
+        displayAdvancedSearchLink = 0
+        blind.numberOfResults = 10
+        results {
+			titleCropAfter = 50
+			titleCropSignifier = ...
+			summaryCropAfter = 180
+			summaryCropSignifier =
+			hrefInSummaryCropAfter = 60
+			hrefInSummaryCropSignifier = ...
+			markupSW_summaryMax = 300
+			markupSW_postPreLgd = 60
+			markupSW_postPreLgd_offset = 5
+			markupSW_divider = ...
+			markupSW_divider.noTrimWrap = | | |
+			pathExcludeDoktypes =
+        }
+    }
+}
+
+
+##############################
+#### PREV/NEXT NAVIGATION ####
+##############################
+lib.PREV_NEXT = COA
+lib.PREV_NEXT {
+    wrap = <div class="prevNext">|</div>
+    10 = HMENU
+    10 {
+        special = browse
+        special {
+            items = prev
+            items.prevnextToSection = 0
+        }
+        1 = TMENU
+        1 {
+            NO = 1
+            NO {
+                doNotLinkIt = 1
+                stdWrap.cObject = COA
+                stdWrap.cObject {
+                    10 = TEXT
+                    10 {
+                        field = title
+                        typolink {
+                            parameter.field = uid
+                            returnLast = url
+                        }
+                        wrap = <a href="|" title="{field:title}" class="btn-prev">« {field:title}</a>
+                        insertData = 1
+                    }
+                }
+            }
+        }
+        stdWrap.ifEmpty.cObject = HMENU
+        stdWrap.ifEmpty.cObject{
+            special = browse
+            special {
+                items = last
+                items.prevsection = 1
+                items.prevnextToSection = 1
+            }
+            1 = TMENU
+            1 {
+                NO = 1
+                NO {
+                    doNotLinkIt = 1
+                    stdWrap.cObject = COA
+                    stdWrap.cObject {
+                        10 = TEXT
+                        10 {
+                            field = title
+                            typolink {
+                                parameter.field = uid
+                                returnLast = url
+                            }
+                            wrap = <a href="|" title="{field:title}" class="btn-prev">«&nbsp;{field:title}</a>
+                            insertData = 1
+                        }
+                    }
+                }
+            }
+        }
+    }
+    20 = HMENU
+    20 {
+        special = browse
+        special {
+            items = next
+            items.prevnextToSection = 0
+        }
+        1 = TMENU
+        1 {
+            NO = 1
+            NO {
+                doNotLinkIt = 1
+                stdWrap.cObject = COA
+                stdWrap.cObject {
+                    10 = TEXT
+                    10 {
+                        field = title
+                        typolink {
+                            parameter.field = uid
+                            returnLast = url
+                        }
+                        wrap = <a href="|" title="{field:title}" class="btn-next">{field:title}&nbsp;»</a>
+                        insertData = 1
+                    }
+                }
+            }
+        }
+        stdWrap.ifEmpty.cObject = HMENU
+        stdWrap.ifEmpty.cObject{
+            special = browse
+            special {
+                items = first
+                items.nextsection = 1
+                items.prevnextToSection = 1
+            }
+            1 = TMENU
+            1 {
+                NO = 1
+                NO {
+                doNotLinkIt = 1
+                stdWrap.cObject = COA
+                stdWrap.cObject {
+                    10 = TEXT
+                    10 {
+                        field = title
+                        typolink {
+                            parameter.field = uid
+                            returnLast = url
+                        }
+                        wrap = <a href="|" title="{field:title}" class="btn-next">{field:title}&nbsp;»</a>
+                        insertData = 1
+                    }
+                }
+                }
+            }
+        }
+    }
+}
+
+
+###########################
+#### PAGE LAST UPDATED ####
+###########################
+lib.lastUpdated = TEXT
+lib.lastUpdated {
+    data. = page:tstamp
+    strftime = %d.%m.%Y %H:%M
+    wrap = |
 }

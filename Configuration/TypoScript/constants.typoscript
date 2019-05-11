@@ -4,25 +4,82 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/constants.typoscript">
 
 
+##############
+### CONFIG ###
+##############
+config {
+#   baseURL = http://localhost:8009/
+##  baseURL = https://live.qmh.sub.uni-goettingen.de/
+    absRefPrefix = /
+##  absRefPrefix = https://live.qmh.sub.uni-goettingen.de/
+
+    linkVars = L
+    sys_language_uid = 0
+    #language = DE-DE
+    language = de
+    #flag = dede
+    flag = de
+    locale_all = de_DE.UTF-8
+    # don't move head javascript into external file
+    removeDefaultJS = 0
+}
+
+[siteLanguage('title') == 'English']
+    config {
+        language = en
+        flag = gb
+        sys_language_uid = 1
+        sys_language_mode = content_fallback
+        sys_language_overlay = 1
+        # change setting in html-tag
+        htmlTag_setParams = lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml"
+    }
+[global]
+
+
 ############
 ### PAGE ###
 ############
 page {
     logo {
-        file = EXT:tmpl_qmh/Resources/Public/Images/logo.svg
-        fileInverted = EXT:tmpl_qmh/Resources/Public/Images/logo-inverted.svg
+        file = EXT:tmpl_qmh/Resources/Public/Images/uni_logo.svg
+        #fileInverted = EXT:tmpl_qmh/Resources/Public/Images/uni-logo-inverted.svg
         height = 52
         width = 192
-        alt = tmpl qmh
-        linktitle = tmpl qmh
+        alt = uni_logo.svg
+        linktitle = Startseite - QM-Handbuch der Georg-August-Universität Göttingen
     }
     favicon {
-        file = EXT:tmpl_qmh/Resources/Public/Icons/favicon.ico
+        file = EXT:tmpl_qmh/Resources/Public/Icons/favicon.png
     }
     fluidtemplate {
         layoutRootPath = EXT:tmpl_qmh/Resources/Private/Layouts/Page/
         partialRootPath = EXT:tmpl_qmh/Resources/Private/Partials/Page/
         templateRootPath = EXT:tmpl_qmh/Resources/Private/Templates/Page/
+    }
+    preloader {
+        enable = 0
+    }
+    theme {
+        navigation.type = top
+        navigation.icon.enable = 1
+        navigation.dropdown.icon.enable = 1
+        navigation.style = default
+        language.enable = 1
+        language.languageValue = 0,1
+        subnavigation.icon.enable = 1
+        breadcrumb.enable = 1
+        breadcrumb.enableLevel = 0
+        socialmedia.enable = 1
+        socialmedia.channels.facebook.url = https://www.facebook.com/georgiaaugusta
+        socialmedia.channels.twitter.url = https://twitter.com/unigoettingen
+        socialmedia.channels.instagram.url = https://www.instagram.com/unigoettingen/
+        socialmedia.channels.youtube.url = https://www.youtube.com/channel/UCzg-z2TL0Ks4Efz5o0z7AxQ
+        cookieconsent.enable = 0
+        copyright.text = &copy; ###CURRENTYEAR### Georg-August-Universität Göttingen
+    }
+    config {
+        index_enable = 1
     }
 }
 
@@ -36,6 +93,18 @@ plugin.bootstrap_package {
         partialRootPath = EXT:tmpl_qmh/Resources/Private/Partials/
         templateRootPath = EXT:tmpl_qmh/Resources/Private/Templates/
     }
+}
+plugin.tx_indexedsearch {
+    view {
+        templateRootPath = EXT:tmpl_qmh/Resources/Private/Templates/IndexedSearch/
+        partialRootPath = EXT:tmpl_qmh/Resources/Private/Partials/IndexedSearch/
+    }
+ 	settings {
+ 		# cat=plugin.tx_indexedsearch/settings; type=integer; label=Set the target page where search results are shown
+ 		targetPid = 547
+ 		# cat=plugin.tx_indexedsearch/settings; type=string; label=A list of integer which should be root-pages to search from
+ 		rootPidList = 119
+ 	}
 }
 
 

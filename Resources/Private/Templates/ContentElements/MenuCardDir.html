@@ -1,0 +1,56 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+
+    <f:if condition="{menu}">
+        <f:variable name="imageConfig">{settings.responsiveimages.contentelements.menu_card_dir.{data.pi_flexform.columns}}</f:variable>
+        <bk2k:data.imageVariants as="variants" variants="{variants}" multiplier="{imageConfig.multiplier}" gutters="{imageConfig.gutters}" corrections="{imageConfig.corrections}" />
+        <f:render partial="Menu/SkipNavigation" arguments="{_all}" />
+        <div class="card-menu card-menu card-menu-align-{data.pi_flexform.align} card-menu-columns-{data.pi_flexform.columns}">
+            <f:for each="{menu}" as="page">
+                <div class="card-menu-item">
+
+                    <a href="{page.link}"{f:if(condition: page.target, then: ' target="{page.target}"')} title="{page.title}" class="thumbnail-menu-link" data-toggle="tooltip">
+                        <div class="card card-uid-{page.data.uid}">
+                            <f:if condition="{page.files.0}">
+                                <div class="card-img-top">
+                                    <f:render partial="Media/Rendering/Image" arguments="{file: page.files.0, data: page.data, settings: settings, variants: variants}" />
+                                </div>
+                            </f:if>
+                            <div class="card-body card-body-uid-{page.data.uid}">
+                                <f:if condition="{page.icon}">
+                                    <div class="card-icon">
+                                        <f:if condition="{page.icon.0.extension} === svg">
+                                            <f:then>
+                                                <bk2k:inlineSvg image="{page.icon.0}" width="{settings.menucard.icon.width}" height="{settings.menucard.icon.height}" />
+                                            </f:then>
+                                            <f:else>
+                                                <f:image image="{page.icon.0}" alt="{page.icon.0.alternative}" title="{page.icon.0.title}" width="{settings.menucard.icon.width}" height="{settings.menucard.icon.height}" />
+                                            </f:else>
+                                        </f:if>
+                                    </div>
+                                </f:if>
+                                <f:if condition="{page.data.subtitle}">
+                                    <h4 class="card-subtitle">
+                                        <f:format.crop maxCharacters="{settings.menucard.subtitle.crop}">{page.data.subtitle}</f:format.crop>
+                                    </h4>
+                                </f:if>
+                                <f:if condition="{page.title}">
+                                    <h3 class="card-title">
+                                        <f:format.crop maxCharacters="{settings.menucard.title.crop}">{page.title}</f:format.crop>
+                                    </h3>
+                                </f:if>
+                                <f:if condition="{page.data.abstract}">
+                                    <p class="card-text"><f:format.crop maxCharacters="{settings.menucard.abstract.crop}">{page.data.abstract}</f:format.crop></p>
+                                </f:if>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </f:for>
+        </div>
+    </f:if>
+
+</f:section>
+</html>
